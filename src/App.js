@@ -13,9 +13,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      keys: [],
       questions: [],
-      value: "Parent",
+      keys: [],
+      onlyQuestionsArray: [],
       score: null,
       curreInd: 0,
     };
@@ -28,14 +28,24 @@ class App extends React.Component {
       let data = querySnapShot.val() ? querySnapShot.val() : {};
       let questionsItems = data;
       //maybe filter on this stage and keys to keys etc
+      let keysArray = Object.keys(questionsItems);
+
+      let arrayWithQuestionsOnly = [];
+      keysArray.forEach((key) =>
+        arrayWithQuestionsOnly.push(questionsItems[key])
+      );
+
       this.setState({
         questions: questionsItems,
+        keys: keysArray,
+        onlyQuestionsArray: arrayWithQuestionsOnly,
       });
     });
   }
 
   addQuestion() {
     //add routing and other component to add questions
+    //only for testing
     db.ref("/question_8th").push({
       section: "pierwiastki",
       question: "&radic;37 &#8729 &radic;12 &#8729 &#8731 9",
@@ -57,7 +67,7 @@ class App extends React.Component {
   }
 
   hangleDataFromChild = (dataFromChild) => {
-    this.setState({ score: dataFromChild });
+    this.setState({ score: this.state.score + dataFromChild });
   };
 
   render() {
