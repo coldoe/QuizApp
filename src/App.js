@@ -15,7 +15,11 @@ class App extends React.Component {
     this.state = {
       keys: [],
       questions: [],
+      value: "Parent",
+      score: null,
+      curreInd: 0,
     };
+    this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +45,7 @@ class App extends React.Component {
       good_answer: "good",
     });
   }
+
   filterAnArray() {
     //got keys
     let questionsKeys = Object.keys(this.state.questions);
@@ -51,11 +56,16 @@ class App extends React.Component {
     this.setState({ questions: array });
   }
 
+  hangleDataFromChild = (dataFromChild) => {
+    this.setState({ score: dataFromChild });
+  };
+
   render() {
     let questionsKeys = Object.keys(this.state.questions);
 
     return (
       <div className="App">
+        {/* should have array with only questions to iterate over them using button */}
         <button onClick={() => this.addQuestion()}>Add Quest</button>
         <button onClick={() => this.filterAnArray()}>Filter</button>
         {questionsKeys.length > 0 ? (
@@ -64,6 +74,7 @@ class App extends React.Component {
               key={key}
               id={key}
               wholeQuestion={this.state.questions[key]}
+              action={this.hangleDataFromChild}
             />
           ))
         ) : (
