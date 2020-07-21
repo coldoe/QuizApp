@@ -16,8 +16,9 @@ class App extends React.Component {
       questions: [],
       keys: [],
       onlyQuestionsArray: [],
-      score: null,
+      score: 0,
       curreInd: 0,
+      firstLoading: true,
     };
     this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
@@ -67,6 +68,8 @@ class App extends React.Component {
   }
 
   hangleDataFromChild = (dataFromChild) => {
+    // because i know that user has quest to do
+    this.setState({ firstLoading: false });
     if (this.state.curreInd <= this.state.onlyQuestionsArray.length - 1) {
       this.setState({ curreInd: this.state.curreInd + 1 });
       this.setState({ score: this.state.score + dataFromChild });
@@ -74,7 +77,7 @@ class App extends React.Component {
   };
 
   render() {
-    let questionsKeys = Object.keys(this.state.questions);
+    // let questionsKeys = Object.keys(this.state.questions);
 
     return (
       <div className="App">
@@ -89,15 +92,15 @@ class App extends React.Component {
             }
             action={this.hangleDataFromChild}
           ></Question>
-        ) : this.state.curreInd >= this.state.onlyQuestionsArray.length - 1 ? (
+        ) : this.state.firstLoading === false ? (
           <h1>koniec pytan</h1>
         ) : (
           <h1>loading...</h1>
         )}
 
         {/* should have array with only questions to iterate over them using button */}
-
-        <button onClick={() => this.addQuestion()}>Add Quest</button>
+        {/* everything at once */}
+        {/* <button onClick={() => this.addQuestion()}>Add Quest</button>
         <button onClick={() => this.filterAnArray()}>Filter</button>
 
         {questionsKeys.length > 0 ? (
@@ -111,7 +114,7 @@ class App extends React.Component {
           ))
         ) : (
           <h1> nothing here loading data ...</h1>
-        )}
+        )} */}
       </div>
     );
   }
