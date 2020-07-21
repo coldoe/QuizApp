@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      keys: [],
       questions: [],
     };
   }
@@ -22,7 +23,7 @@ class App extends React.Component {
     db.ref("question_8th").on("value", (querySnapShot) => {
       let data = querySnapShot.val() ? querySnapShot.val() : {};
       let questionsItems = data;
-
+      //maybe filter on this stage and keys to keys etc
       this.setState({
         questions: questionsItems,
       });
@@ -30,9 +31,10 @@ class App extends React.Component {
   }
 
   addQuestion() {
+    //add routing and other component to add questions
     db.ref("/question_8th").push({
       section: "pierwiastki",
-      question: "question",
+      question: "&radic;37 &#8729 &radic;12 &#8729 &#8731 9",
       bad_answer_1: "b1",
       bad_answer_2: "b2",
       bad_answer_3: "b3",
