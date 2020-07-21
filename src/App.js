@@ -67,7 +67,10 @@ class App extends React.Component {
   }
 
   hangleDataFromChild = (dataFromChild) => {
-    this.setState({ score: this.state.score + dataFromChild });
+    if (this.state.curreInd <= this.state.onlyQuestionsArray.length - 1) {
+      this.setState({ curreInd: this.state.curreInd + 1 });
+      this.setState({ score: this.state.score + dataFromChild });
+    }
   };
 
   render() {
@@ -75,9 +78,28 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        {this.state.keys.length > 0 &&
+        this.state.curreInd <= this.state.onlyQuestionsArray.length - 1 ? (
+          <Question
+            key={this.state.keys[this.state.curreInd]}
+            id={this.state.keys[this.state.curreInd]}
+            wholeQuestion={
+              // this.state.questions[this.state.keys[this.state.curreInd]]
+              this.state.onlyQuestionsArray[this.state.curreInd]
+            }
+            action={this.hangleDataFromChild}
+          ></Question>
+        ) : this.state.curreInd >= this.state.onlyQuestionsArray.length - 1 ? (
+          <h1>koniec pytan</h1>
+        ) : (
+          <h1>loading...</h1>
+        )}
+
         {/* should have array with only questions to iterate over them using button */}
+
         <button onClick={() => this.addQuestion()}>Add Quest</button>
         <button onClick={() => this.filterAnArray()}>Filter</button>
+
         {questionsKeys.length > 0 ? (
           questionsKeys.map((key) => (
             <Question
@@ -88,7 +110,7 @@ class App extends React.Component {
             />
           ))
         ) : (
-          <h1> nothing here</h1>
+          <h1> nothing here loading data ...</h1>
         )}
       </div>
     );
