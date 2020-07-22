@@ -36,6 +36,7 @@ export const Question = (props) => {
     <div className="Question">
       <div className="justify-content center">
         <h1
+          className="quest"
           dangerouslySetInnerHTML={{ __html: props.wholeQuestion.question }}
         />
       </div>

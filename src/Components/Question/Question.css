@@ -1,4 +1,9 @@
 .btn-block {
   width: 100%;
-  height: 5em;
+  height: 8em;
+}
+.quest {
+  min-height: 5em;
+  background-color: blue;
+  overflow-wrap: break-word;
 }
