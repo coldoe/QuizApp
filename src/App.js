@@ -67,13 +67,17 @@ class App extends React.Component {
     this.setState({ questions: array });
   }
 
-  hangleDataFromChild = (dataFromChild) => {
+  hangleDataFromChild = () => {
     // because i know that user has quest to do
     this.setState({ firstLoading: false });
     if (this.state.curreInd <= this.state.onlyQuestionsArray.length - 1) {
       this.setState({ curreInd: this.state.curreInd + 1 });
-      this.setState({ score: this.state.score + dataFromChild });
     }
+  };
+
+  handleScoreFromChild = (dataFromChild) => {
+    console.log(dataFromChild);
+    this.setState({ score: this.state.score + dataFromChild });
   };
 
   render() {
@@ -81,6 +85,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <h1>score: {this.state.score}</h1>
         {this.state.keys.length > 0 &&
         this.state.curreInd <= this.state.onlyQuestionsArray.length - 1 ? (
           <Question
@@ -91,6 +96,7 @@ class App extends React.Component {
               this.state.onlyQuestionsArray[this.state.curreInd]
             }
             action={this.hangleDataFromChild}
+            handleScore={this.handleScoreFromChild}
           ></Question>
         ) : this.state.firstLoading === false ? (
           <h1>koniec pytan</h1>
