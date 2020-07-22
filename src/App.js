@@ -6,6 +6,7 @@ import React from "react";
 
 //components
 import { Question } from "./Components/Question/Question";
+import { Loading } from "./Components/Loading/Loading";
 //css
 import "./App.css";
 
@@ -84,25 +85,36 @@ class App extends React.Component {
     // let questionsKeys = Object.keys(this.state.questions);
 
     return (
-      <div className="App">
-        <h1>score: {this.state.score}</h1>
-        {this.state.keys.length > 0 &&
-        this.state.curreInd <= this.state.onlyQuestionsArray.length - 1 ? (
-          <Question
-            key={this.state.keys[this.state.curreInd]}
-            id={this.state.keys[this.state.curreInd]}
-            wholeQuestion={
-              // this.state.questions[this.state.keys[this.state.curreInd]]
-              this.state.onlyQuestionsArray[this.state.curreInd]
-            }
-            action={this.hangleDataFromChild}
-            handleScore={this.handleScoreFromChild}
-          ></Question>
-        ) : this.state.firstLoading === false ? (
-          <h1>koniec pytan</h1>
-        ) : (
-          <h1>loading...</h1>
-        )}
+      <div className="container">
+        <div clasname="row">
+          <div className="col s12">
+            <div className="App">
+              {this.state.keys.length > 0 &&
+              this.state.curreInd <=
+                this.state.onlyQuestionsArray.length - 1 ? (
+                <div className="red lighten-3 col s4 ">
+                  <h1 className="justify-content center">
+                    Score: {this.state.score}
+                  </h1>
+                  <Question
+                    key={this.state.keys[this.state.curreInd]}
+                    id={this.state.keys[this.state.curreInd]}
+                    wholeQuestion={
+                      // this.state.questions[this.state.keys[this.state.curreInd]]
+                      this.state.onlyQuestionsArray[this.state.curreInd]
+                    }
+                    action={this.hangleDataFromChild}
+                    handleScore={this.handleScoreFromChild}
+                  ></Question>
+                </div>
+              ) : this.state.firstLoading === false ? (
+                <h1 className="justify-content center">koniec pytan</h1>
+              ) : (
+                <Loading />
+              )}
+            </div>
+          </div>
+        </div>
 
         {/* should have array with only questions to iterate over them using button */}
         {/* everything at once */}

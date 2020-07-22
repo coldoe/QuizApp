@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+//styles
+import "./Question.css";
 
 export const Question = (props) => {
   // const [score, setscore] = useState(0);
@@ -32,37 +34,68 @@ export const Question = (props) => {
 
   return (
     <div className="Question">
-      {/* <h1> {props.id}</h1> */}
-      <h1 dangerouslySetInnerHTML={{ __html: props.wholeQuestion.question }} />
-      <button
-        onClick={() => handleUserAnswer(arrayAnswers[0])}
-        dangerouslySetInnerHTML={{ __html: arrayAnswers[0] }}
-        disabled={isAnswered}
-      ></button>
+      <div className="justify-content center">
+        <h1
+          dangerouslySetInnerHTML={{ __html: props.wholeQuestion.question }}
+        />
+      </div>
 
-      <button
-        onClick={() => handleUserAnswer(arrayAnswers[1])}
-        dangerouslySetInnerHTML={{ __html: arrayAnswers[1] }}
-        disabled={isAnswered}
-      ></button>
+      <div className="justify-content center">
+        <div className="row">
+          <div className="red darken-4 col  s6 m6 l6 xl6">
+            <button
+              className="btn-block waves-effect waves-light btn-large"
+              onClick={() => handleUserAnswer(arrayAnswers[0])}
+              dangerouslySetInnerHTML={{ __html: arrayAnswers[0] }}
+              disabled={isAnswered}
+            ></button>
+          </div>
+          <div className="deep-purple col  s6 m6 l6 xl6">
+            <button
+              className="btn-block waves-effect waves-light btn-large"
+              onClick={() => handleUserAnswer(arrayAnswers[1])}
+              dangerouslySetInnerHTML={{ __html: arrayAnswers[1] }}
+              disabled={isAnswered}
+            ></button>
+          </div>
+        </div>
 
-      <button
-        onClick={() => handleUserAnswer(arrayAnswers[2])}
-        dangerouslySetInnerHTML={{ __html: arrayAnswers[2] }}
-        disabled={isAnswered}
-      ></button>
+        <div className="row">
+          <div className="teal darken-4 col  s6 m6 l6 xl6">
+            <button
+              className="btn-block waves-effect waves-light btn-large"
+              onClick={() => handleUserAnswer(arrayAnswers[2])}
+              dangerouslySetInnerHTML={{ __html: arrayAnswers[2] }}
+              disabled={isAnswered}
+            ></button>
+          </div>
+          <div className="lime darken-4 col s6 m6 l6 xl6">
+            <button
+              className="btn-block waves-effect waves-light btn-large"
+              onClick={() => handleUserAnswer(arrayAnswers[3])}
+              dangerouslySetInnerHTML={{ __html: arrayAnswers[3] }}
+              disabled={isAnswered}
+            ></button>
+          </div>
+        </div>
+      </div>
 
-      <button
-        onClick={() => handleUserAnswer(arrayAnswers[3])}
-        dangerouslySetInnerHTML={{ __html: arrayAnswers[3] }}
-        disabled={isAnswered}
-      ></button>
-
-      <h2 dangerouslySetInnerHTML={{ __html: props.wholeQuestion.section }} />
-
-      <button disabled={!isAnswered} onClick={() => props.action()}>
-        Next Question
-      </button>
+      <h2
+        className="justify-content center"
+        dangerouslySetInnerHTML={{
+          __html: "Section: " + props.wholeQuestion.section.toUpperCase(),
+        }}
+      />
+      {isAnswered ? (
+        <button
+          className={
+            "waves-effect waves-light btn-small light-blue accent-3 pulse"
+          }
+          onClick={() => props.action()}
+        >
+          Next Question
+        </button>
+      ) : null}
     </div>
   );
 };
