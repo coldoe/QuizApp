@@ -1,12 +1,13 @@
 //environment
-import { db } from "./env";
+import { db } from "./Components/env";
 
 //libraries
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //components
-import { Question } from "./Components/Question/Question";
-import { Loading } from "./Components/Loading/Loading";
+// import { Question } from "./Components/Question/Question";
+import QuestionManager from "./Components/QuestionManager/QuestionManager";
+// import { Loading } from "./Components/Loading/Loading";
 //css
 import "./App.css";
 
@@ -26,23 +27,21 @@ class App extends React.Component {
 
   componentDidMount() {
     //do i need a key from firebase?
-    db.ref("question_8th").on("value", (querySnapShot) => {
-      let data = querySnapShot.val() ? querySnapShot.val() : {};
-      let questionsItems = data;
-      //maybe filter on this stage and keys to keys etc
-      let keysArray = Object.keys(questionsItems);
-
-      let arrayWithQuestionsOnly = [];
-      keysArray.forEach((key) =>
-        arrayWithQuestionsOnly.push(questionsItems[key])
-      );
-
-      this.setState({
-        questions: questionsItems,
-        keys: keysArray,
-        onlyQuestionsArray: arrayWithQuestionsOnly,
-      });
-    });
+    // db.ref("question_8th").on("value", (querySnapShot) => {
+    //   let data = querySnapShot.val() ? querySnapShot.val() : {};
+    //   let questionsItems = data;
+    //   //maybe filter on this stage and keys to keys etc
+    //   let keysArray = Object.keys(questionsItems);
+    //   let arrayWithQuestionsOnly = [];
+    //   keysArray.forEach((key) =>
+    //     arrayWithQuestionsOnly.push(questionsItems[key])
+    //   );
+    //   this.setState({
+    //     questions: questionsItems,
+    //     keys: keysArray,
+    //     onlyQuestionsArray: arrayWithQuestionsOnly,
+    //   });
+    // });
   }
 
   addQuestion() {
@@ -84,12 +83,14 @@ class App extends React.Component {
     // let questionsKeys = Object.keys(this.state.questions);
 
     return (
-      <Router>
-        <Switch>
-          <Route path="/quizz" component={Loading} />
-          <Route path="/quizz1" render={() => <h1>hi</h1>} />
-        </Switch>
-      </Router>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/quizz" component={QuestionManager} />
+          </Switch>
+        </Router>
+      </div>
+
       //workingquizz should be a new component to render
       //that a lot of dmg and it will take time xd
 

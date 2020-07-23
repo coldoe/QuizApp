@@ -1,10 +1,7 @@
 Will be quiz with firebase <3
 
 Todo:
-timer?
-styles?
-routing?
-addquestion component?
+all divs from app to new functional component
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
