@@ -110,7 +110,7 @@ class App extends React.Component {
               ) : this.state.firstLoading === false ? (
                 <h1 className="justify-content center">koniec pytan</h1>
               ) : (
-                <Loading />
+                <Loading id="loadingCircle" />
               )}
             </div>
           </div>
