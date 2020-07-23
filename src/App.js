@@ -4,10 +4,16 @@ import { db } from "./Components/env";
 //libraries
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+// import "materialize-css/dist/css/materialize.min.css";
+// import "materialize-css/bin/materialize.js";
+
+import M from "materialize-css/dist/js/materialize.min.js";
+
 //components
-// import { Question } from "./Components/Question/Question";
+import { Header } from "./Components/Header/Header";
 import QuestionManager from "./Components/QuestionManager/QuestionManager";
-// import { Loading } from "./Components/Loading/Loading";
+
 //css
 import "./App.css";
 
@@ -26,6 +32,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    //give animation to navbar
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".sidenav");
+      var instances = M.Sidenav.init(elems, {});
+    });
+
     //do i need a key from firebase?
     // db.ref("question_8th").on("value", (querySnapShot) => {
     //   let data = querySnapShot.val() ? querySnapShot.val() : {};
@@ -84,6 +96,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <Header />
         <Router>
           <Switch>
             <Route path="/quizz" component={QuestionManager} />
