@@ -1,22 +1,30 @@
+//libraries
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
     <div className="Header">
       <nav>
         <div className="nav-wrapper teal lighten-2">
-          <a href="/quizz" class="brand-logo">
+          <NavLink data-target="mobile-demo" className="brand-logo" to="/">
+            {" "}
+            Logo{" "}
+          </NavLink>
+          {/* <a href="/quizz" class="brand-logo">
             Logo
-          </a>
+          </a> */}
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </a>
           <ul className="right hide-on-med-and-down">
             <li>
-              <a href="sass.html">Sass</a>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <a href="badges.html">Components</a>
+              <NavLink className="center-align" to="/quizz">
+                Quizz
+              </NavLink>
             </li>
             <li>
               <a href="collapsible.html">Javascript</a>
@@ -30,12 +38,14 @@ export const Header = () => {
 
       <ul className="sidenav" id="mobile-demo">
         <li>
-          <a className="center-align" href="sass.html">
-            Sass
-          </a>
+          <NavLink className="center-align" to="/">
+            Home
+          </NavLink>
         </li>
         <li>
-          <a href="badges.html">Components</a>
+          <NavLink className="center-align" to="/quizz">
+            Quizz
+          </NavLink>
         </li>
         <li>
           <a href="collapsible.html">Javascript</a>

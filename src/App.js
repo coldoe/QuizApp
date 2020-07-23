@@ -96,8 +96,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header />
         <Router>
+          <Header />
           <Switch>
             <Route path="/quizz" component={QuestionManager} />
           </Switch>
