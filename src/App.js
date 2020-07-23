@@ -3,7 +3,7 @@ import { db } from "./env";
 
 //libraries
 import React from "react";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //components
 import { Question } from "./Components/Question/Question";
 import { Loading } from "./Components/Loading/Loading";
@@ -80,60 +80,50 @@ class App extends React.Component {
     console.log(dataFromChild);
     this.setState({ score: this.state.score + dataFromChild });
   };
-
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
 
     return (
-      <div className="container">
-        <div clasname="row">
-          <div className="col s12">
-            <div className="App">
-              {this.state.keys.length > 0 &&
-              this.state.curreInd <=
-                this.state.onlyQuestionsArray.length - 1 ? (
-                <div className="col s4 ">
-                  <h1 className="justify-content center">
-                    Score: {this.state.score}
-                  </h1>
-                  <Question
-                    key={this.state.keys[this.state.curreInd]}
-                    id={this.state.keys[this.state.curreInd]}
-                    wholeQuestion={
-                      // this.state.questions[this.state.keys[this.state.curreInd]]
-                      this.state.onlyQuestionsArray[this.state.curreInd]
-                    }
-                    action={this.hangleDataFromChild}
-                    handleScore={this.handleScoreFromChild}
-                  ></Question>
-                </div>
-              ) : this.state.firstLoading === false ? (
-                <h1 className="justify-content center">koniec pytan</h1>
-              ) : (
-                <Loading id="loadingCircle" />
-              )}
-            </div>
-          </div>
-        </div>
+      <Router>
+        <Switch>
+          <Route path="/quizz" component={Loading} />
+          <Route path="/quizz1" render={() => <h1>hi</h1>} />
+        </Switch>
+      </Router>
+      //workingquizz should be a new component to render
+      //that a lot of dmg and it will take time xd
 
-        {/* should have array with only questions to iterate over them using button */}
-        {/* everything at once */}
-        {/* <button onClick={() => this.addQuestion()}>Add Quest</button>
-        <button onClick={() => this.filterAnArray()}>Filter</button>
-
-        {questionsKeys.length > 0 ? (
-          questionsKeys.map((key) => (
-            <Question
-              key={key}
-              id={key}
-              wholeQuestion={this.state.questions[key]}
-              action={this.hangleDataFromChild}
-            />
-          ))
-        ) : (
-          <h1> nothing here loading data ...</h1>
-        )} */}
-      </div>
+      // <div className="container">
+      //   <div clasname="row">
+      //     <div className="col s12">
+      //       <div className="App">
+      //         {this.state.keys.length > 0 &&
+      //         this.state.curreInd <=
+      //           this.state.onlyQuestionsArray.length - 1 ? (
+      //           <div className="col s4 ">
+      //             <h1 className="justify-content center">
+      //               Score: {this.state.score}
+      //             </h1>
+      //             <Question
+      //               key={this.state.keys[this.state.curreInd]}
+      //               id={this.state.keys[this.state.curreInd]}
+      //               wholeQuestion={
+      //                 // this.state.questions[this.state.keys[this.state.curreInd]]
+      //                 this.state.onlyQuestionsArray[this.state.curreInd]
+      //               }
+      //               action={this.hangleDataFromChild}
+      //               handleScore={this.handleScoreFromChild}
+      //             ></Question>
+      //           </div>
+      //         ) : this.state.firstLoading === false ? (
+      //           <h1 className="justify-content center">koniec pytan</h1>
+      //         ) : (
+      //           <Loading id="loadingCircle" />
+      //         )}
+      //       </div>
+      //     </div>
+      //   </div>
+      // </div>
     );
   }
 }
