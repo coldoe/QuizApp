@@ -43,15 +43,17 @@ export const Question = (props) => {
 
       <div className="justify-content center">
         <div className="row">
-          <div className="red darken-4 col  s6 m6 l6 xl6">
+          <div className="col  s12 m12 l6 xl6">
             <button
               className="btn-block waves-effect waves-light btn-large"
+              id="button"
               onClick={() => handleUserAnswer(arrayAnswers[0])}
               dangerouslySetInnerHTML={{ __html: arrayAnswers[0] }}
               disabled={isAnswered}
             ></button>
           </div>
-          <div className="deep-purple col  s6 m6 l6 xl6">
+
+          <div className="col s12 m12 l6 xl6">
             <button
               className="btn-block waves-effect waves-light btn-large"
               onClick={() => handleUserAnswer(arrayAnswers[1])}
@@ -62,15 +64,17 @@ export const Question = (props) => {
         </div>
 
         <div className="row">
-          <div className="teal darken-4 col  s6 m6 l6 xl6">
+          <div className="col  s12 m12 l6 xl6">
             <button
               className="btn-block waves-effect waves-light btn-large"
+              id="button"
               onClick={() => handleUserAnswer(arrayAnswers[2])}
               dangerouslySetInnerHTML={{ __html: arrayAnswers[2] }}
               disabled={isAnswered}
             ></button>
           </div>
-          <div className="lime darken-4 col s6 m6 l6 xl6">
+
+          <div className="col s12 m12 l6 xl6">
             <button
               className="btn-block waves-effect waves-light btn-large"
               onClick={() => handleUserAnswer(arrayAnswers[3])}
@@ -90,7 +94,7 @@ export const Question = (props) => {
       {isAnswered ? (
         <button
           className={
-            "waves-effect waves-light btn-small light-blue accent-3 pulse"
+            "waves-effect waves-light btn-large light-blue accent-3 pulse right"
           }
           onClick={() => props.action()}
         >

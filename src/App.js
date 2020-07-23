@@ -92,7 +92,7 @@ class App extends React.Component {
               {this.state.keys.length > 0 &&
               this.state.curreInd <=
                 this.state.onlyQuestionsArray.length - 1 ? (
-                <div className="red lighten-3 col s4 ">
+                <div className="col s4 ">
                   <h1 className="justify-content center">
                     Score: {this.state.score}
                   </h1>

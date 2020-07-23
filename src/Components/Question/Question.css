@@ -1,9 +1,35 @@
 .btn-block {
-  width: 100%;
-  height: 8em;
+  width: 90%;
+  height: 5em;
+  border-radius: 10px;
 }
 .quest {
   min-height: 5em;
-  background-color: blue;
+  font-size: 40px;
+  /* background-color: blue; */
   overflow-wrap: break-word;
+}
+
+.row {
+  padding-top: 20px;
+}
+
+.row {
+  width: 100%;
+}
+
+#button {
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 1200px) {
+  #button {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  #button {
+    margin-bottom: 15px;
+  }
 }
