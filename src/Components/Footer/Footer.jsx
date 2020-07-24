@@ -5,7 +5,7 @@ import "./Footer.css";
 export const Footer = () => {
   return (
     <div className="Footer">
-      <footer className="page-footer">
+      <footer className="page-footer blue-grey">
         <div className="container">
           <div className="row">
             <div className="col l6 s12">
@@ -44,7 +44,7 @@ export const Footer = () => {
         </div>
         <div className="footer-copyright">
           <div className="container">
-            © 2014 Copyright Text
+            © 2020 Copyright KD
             <a className="grey-text text-lighten-4 right" href="#!">
               More Links
             </a>
