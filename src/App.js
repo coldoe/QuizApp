@@ -4,15 +4,12 @@ import { db } from "./Components/env";
 //libraries
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-// import "materialize-css/dist/css/materialize.min.css";
-// import "materialize-css/bin/materialize.js";
-
 import M from "materialize-css/dist/js/materialize.min.js";
 
 //components
 import { Header } from "./Components/Header/Header";
 import QuestionManager from "./Components/QuestionManager/QuestionManager";
+import { Footer } from "./Components/Footer/Footer";
 
 //css
 import "./App.css";
@@ -101,43 +98,9 @@ class App extends React.Component {
           <Switch>
             <Route path="/quizz" component={QuestionManager} />
           </Switch>
+          <Footer />
         </Router>
       </div>
-
-      //workingquizz should be a new component to render
-      //that a lot of dmg and it will take time xd
-
-      // <div className="container">
-      //   <div clasname="row">
-      //     <div className="col s12">
-      //       <div className="App">
-      //         {this.state.keys.length > 0 &&
-      //         this.state.curreInd <=
-      //           this.state.onlyQuestionsArray.length - 1 ? (
-      //           <div className="col s4 ">
-      //             <h1 className="justify-content center">
-      //               Score: {this.state.score}
-      //             </h1>
-      //             <Question
-      //               key={this.state.keys[this.state.curreInd]}
-      //               id={this.state.keys[this.state.curreInd]}
-      //               wholeQuestion={
-      //                 // this.state.questions[this.state.keys[this.state.curreInd]]
-      //                 this.state.onlyQuestionsArray[this.state.curreInd]
-      //               }
-      //               action={this.hangleDataFromChild}
-      //               handleScore={this.handleScoreFromChild}
-      //             ></Question>
-      //           </div>
-      //         ) : this.state.firstLoading === false ? (
-      //           <h1 className="justify-content center">koniec pytan</h1>
-      //         ) : (
-      //           <Loading id="loadingCircle" />
-      //         )}
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }

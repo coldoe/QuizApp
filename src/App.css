@@ -1,3 +1,6 @@
-.app {
-  height: 1000px;
+.App {
+  /* height: 130%; */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }

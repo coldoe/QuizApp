@@ -11,9 +11,6 @@ export const Header = () => {
             {" "}
             Logo{" "}
           </NavLink>
-          {/* <a href="/quizz" class="brand-logo">
-            Logo
-          </a> */}
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </a>

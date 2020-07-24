@@ -82,33 +82,35 @@ class QuestionManager extends React.Component {
     // let questionsKeys = Object.keys(this.state.questions);
 
     return (
-      <div className="container">
-        <div clasname="row">
-          <div className="col s12">
-            <div className="App">
-              {this.state.keys.length > 0 &&
-              this.state.curreInd <=
-                this.state.onlyQuestionsArray.length - 1 ? (
-                <div className="col s4 ">
-                  <h1 className="justify-content center">
-                    Score: {this.state.score}
-                  </h1>
-                  <Question
-                    key={this.state.keys[this.state.curreInd]}
-                    id={this.state.keys[this.state.curreInd]}
-                    wholeQuestion={
-                      // this.state.questions[this.state.keys[this.state.curreInd]]
-                      this.state.onlyQuestionsArray[this.state.curreInd]
-                    }
-                    action={this.hangleDataFromChild}
-                    handleScore={this.handleScoreFromChild}
-                  ></Question>
-                </div>
-              ) : this.state.firstLoading === false ? (
-                <h1 className="justify-content center">koniec pytan</h1>
-              ) : (
-                <Loading id="loadingCircle" />
-              )}
+      <div className="QuestionManager">
+        <div className="container">
+          <div clasname="row">
+            <div className="col s12">
+              <div className="App">
+                {this.state.keys.length > 0 &&
+                this.state.curreInd <=
+                  this.state.onlyQuestionsArray.length - 1 ? (
+                  <div className="col s4 ">
+                    <h1 className="justify-content center">
+                      Score: {this.state.score}
+                    </h1>
+                    <Question
+                      key={this.state.keys[this.state.curreInd]}
+                      id={this.state.keys[this.state.curreInd]}
+                      wholeQuestion={
+                        // this.state.questions[this.state.keys[this.state.curreInd]]
+                        this.state.onlyQuestionsArray[this.state.curreInd]
+                      }
+                      action={this.hangleDataFromChild}
+                      handleScore={this.handleScoreFromChild}
+                    ></Question>
+                  </div>
+                ) : this.state.firstLoading === false ? (
+                  <h1 className="justify-content center">koniec pytan</h1>
+                ) : (
+                  <Loading id="loadingCircle" />
+                )}
+              </div>
             </div>
           </div>
         </div>
