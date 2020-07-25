@@ -1,3 +1,20 @@
 .Home {
   height: 90vh;
+  background-color: cadetblue;
+  text-align: center;
+}
+
+.home-text {
+  width: 50%;
+  margin-top: 15%;
+  margin-left: 50%;
+
+  border: 3px solid green;
+  height: 60vh;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 10px;
 }
