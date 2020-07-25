@@ -1,14 +1,32 @@
 //Libraries
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 // import * as Yup from "yup";
+
 //Schemas
 import { AddQuestionSchema } from "../Schema/AddQuestionSchema";
+import { sectionstList } from "../Schema/sectionsList";
+
 //styles
 import "./AddQuestion.css";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 export const AddQuestion = () => {
-  const [bad1, setbad1] = useState("");
+  // const [bad1, setbad1] = useState("");
+  // const sectiontList = [
+  //   {
+  //     label: "Ułamki",
+  //     value: "ulamki",
+  //   },
+  //   {
+  //     label: "Pierwiastki",
+  //     value: "pierwiastki",
+  //   },
+  // ];
+
+  useEffect(() => {
+    M.AutoInit();
+  }, []);
 
   return (
     <div className="AddQuestion">
@@ -62,11 +80,27 @@ export const AddQuestion = () => {
             {errors.question && touched.question ? (
               <div style={{ color: "red" }}>{errors.question}</div>
             ) : null}
+
             <label style={{ color: "black", fontSize: "25px" }}>Section</label>
             <Field name="section" placeholder="section"></Field>
             {errors.section && touched.section ? (
               <div style={{ color: "red" }}>{errors.section}</div>
             ) : null}
+            {/* 
+            <div className="input-field col s12">
+              <select>
+                <option value="" disabled selected>
+                  Choose your option of section
+                </option>
+                {sectionstList.map((option) => (
+                  <option name={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <label>Choose Section</label>
+            </div> */}
+
             <div className="row">
               <button
                 className="col s6 offset-s3 btn-block waves-effect waves-light btn-large"
