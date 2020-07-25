@@ -9,7 +9,7 @@ import "./AddQuestion.css";
 
 export const AddQuestion = () => {
   return (
-    <div className="AddQuestion justify-content-center">
+    <div className="AddQuestion">
       <Formik
         initialValues={{
           bad_answer_1: "",
@@ -27,26 +27,40 @@ export const AddQuestion = () => {
       >
         {({ errors, touched }) => (
           <Form>
+            <label style={{ color: "black", fontSize: "25px" }}>
+              Bad answer nr 1
+            </label>
             <Field name="bad_answer_1" placeholder="bad_answer_1" />
             {errors.bad_answer_1 && touched.bad_answer_1 ? (
               <div style={{ color: "red" }}>{errors.bad_answer_1}</div>
             ) : null}
+            <label style={{ color: "black", fontSize: "25px" }}>
+              Bad answer nr 2
+            </label>
             <Field name="bad_answer_2" placeholder="bad_answer_2" />
             {errors.bad_answer_2 && touched.bad_answer_2 ? (
               <div style={{ color: "red" }}>{errors.bad_answer_2}</div>
             ) : null}
+            <label style={{ color: "black", fontSize: "25px" }}>
+              Bad answer nr 3
+            </label>
             <Field name="bad_answer_3" placeholder="bad_answer_3" />
             {errors.bad_answer_3 && touched.bad_answer_3 ? (
               <div style={{ color: "red" }}>{errors.bad_answer_3}</div>
             ) : null}
+            <label style={{ color: "black", fontSize: "25px" }}>
+              Good answer
+            </label>
             <Field name="good_answer" placeholder="good_answer" />
             {errors.good_answer && touched.good_answer ? (
               <div style={{ color: "red" }}>{errors.good_answer}</div>
             ) : null}
+            <label style={{ color: "black", fontSize: "25px" }}>Question</label>
             <Field name="question" placeholder="question"></Field>
             {errors.question && touched.question ? (
               <div style={{ color: "red" }}>{errors.question}</div>
             ) : null}
+            <label style={{ color: "black", fontSize: "25px" }}>Section</label>
             <Field name="section" placeholder="section"></Field>
             {errors.section && touched.section ? (
               <div style={{ color: "red" }}>{errors.section}</div>
