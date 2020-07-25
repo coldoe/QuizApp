@@ -29,29 +29,37 @@ export const AddQuestion = () => {
           <Form>
             <Field name="bad_answer_1" placeholder="bad_answer_1" />
             {errors.bad_answer_1 && touched.bad_answer_1 ? (
-              <div>{errors.bad_answer_1}</div>
+              <div style={{ color: "red" }}>{errors.bad_answer_1}</div>
             ) : null}
             <Field name="bad_answer_2" placeholder="bad_answer_2" />
             {errors.bad_answer_2 && touched.bad_answer_2 ? (
-              <div>{errors.bad_answer_2}</div>
+              <div style={{ color: "red" }}>{errors.bad_answer_2}</div>
             ) : null}
             <Field name="bad_answer_3" placeholder="bad_answer_3" />
             {errors.bad_answer_3 && touched.bad_answer_3 ? (
-              <div>{errors.bad_answer_3}</div>
+              <div style={{ color: "red" }}>{errors.bad_answer_3}</div>
             ) : null}
             <Field name="good_answer" placeholder="good_answer" />
             {errors.good_answer && touched.good_answer ? (
-              <div>{errors.good_answer}</div>
+              <div style={{ color: "red" }}>{errors.good_answer}</div>
             ) : null}
             <Field name="question" placeholder="question"></Field>
             {errors.question && touched.question ? (
-              <div>{errors.question}</div>
+              <div style={{ color: "red" }}>{errors.question}</div>
             ) : null}
             <Field name="section" placeholder="section"></Field>
             {errors.section && touched.section ? (
-              <div>{errors.section}</div>
+              <div style={{ color: "red" }}>{errors.section}</div>
             ) : null}
-            <button type="submit">Submit</button>
+            <div className="row">
+              <button
+                className="col s6 offset-s3 btn-block waves-effect waves-light btn-large"
+                type="submit"
+              >
+                {" "}
+                Submit{" "}
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
