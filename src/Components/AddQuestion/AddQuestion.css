@@ -1,5 +1,5 @@
 .AddQuestion {
-  height: 95vh;
+  max-width: 90vh;
   margin: auto;
   margin-top: 10vh;
   width: 60%;
