@@ -1,11 +1,11 @@
 //Libraries
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 // import * as Yup from "yup";
 
 //Schemas
 import { AddQuestionSchema } from "../Schema/AddQuestionSchema";
-import { sectionstList } from "../Schema/sectionsList";
+// import { sectionstList } from "../Schema/sectionsList";
 
 //styles
 import "./AddQuestion.css";

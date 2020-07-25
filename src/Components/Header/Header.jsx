@@ -28,9 +28,6 @@ export const Header = () => {
                 Add Question
               </NavLink>
             </li>
-            <li>
-              <a href="mobile.html">Mobile</a>
-            </li>
           </ul>
         </div>
       </nav>
@@ -50,9 +47,6 @@ export const Header = () => {
           <NavLink className="center-align" to="/addQuestion">
             Add Question
           </NavLink>
-        </li>
-        <li>
-          <a href="mobile.html">Mobile</a>
         </li>
       </ul>
     </div>
