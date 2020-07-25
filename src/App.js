@@ -9,6 +9,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 //components
 import { Header } from "./Components/Header/Header";
 import QuestionManager from "./Components/QuestionManager/QuestionManager";
+import { AddQuestion } from "./Components/AddQuestion/AddQuestion";
 import { Footer } from "./Components/Footer/Footer";
 
 //css
@@ -97,6 +98,7 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route path="/quizz" component={QuestionManager} />
+            <Route path="/addQuestion" component={AddQuestion} />
           </Switch>
           <Footer />
         </Router>

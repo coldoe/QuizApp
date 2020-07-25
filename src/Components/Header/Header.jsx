@@ -24,7 +24,9 @@ export const Header = () => {
               </NavLink>
             </li>
             <li>
-              <a href="collapsible.html">Javascript</a>
+              <NavLink className="center-align" to="/addQuestion">
+                Add Question
+              </NavLink>
             </li>
             <li>
               <a href="mobile.html">Mobile</a>
@@ -45,7 +47,9 @@ export const Header = () => {
           </NavLink>
         </li>
         <li>
-          <a href="collapsible.html">Javascript</a>
+          <NavLink className="center-align" to="/addQuestion">
+            Add Question
+          </NavLink>
         </li>
         <li>
           <a href="mobile.html">Mobile</a>
