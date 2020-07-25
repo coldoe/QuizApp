@@ -1,5 +1,5 @@
 //Libraries
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 // import * as Yup from "yup";
 //Schemas
@@ -8,6 +8,8 @@ import { AddQuestionSchema } from "../Schema/AddQuestionSchema";
 import "./AddQuestion.css";
 
 export const AddQuestion = () => {
+  const [bad1, setbad1] = useState("");
+
   return (
     <div className="AddQuestion">
       <Formik
