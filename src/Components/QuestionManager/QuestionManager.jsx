@@ -7,6 +7,7 @@ import React from "react";
 import { Question } from "../Question/Question";
 import { Loading } from "../Loading/Loading";
 //css
+// import "../QuestionManager/QuestionManager.css";
 
 class QuestionManager extends React.Component {
   constructor() {
@@ -106,7 +107,10 @@ class QuestionManager extends React.Component {
                     ></Question>
                   </div>
                 ) : this.state.firstLoading === false ? (
-                  <h1 className="justify-content center">koniec pytan</h1>
+                  //there should be new component
+                  //button to home
+                  //scores and stats
+                  <h1 className="justify-content center">End of Questions</h1>
                 ) : (
                   <Loading id="loadingCircle" />
                 )}

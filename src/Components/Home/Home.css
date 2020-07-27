@@ -10,11 +10,9 @@
   margin-left: 50%;
 
   border: 3px solid green;
-  height: 60vh;
+  height: 50vh;
 
   display: block;
   margin-left: auto;
   margin-right: auto;
-
-  font-size: 10px;
 }

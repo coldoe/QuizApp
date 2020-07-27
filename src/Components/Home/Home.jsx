@@ -8,11 +8,9 @@ export const Home = () => {
   return (
     <div className="Home">
       <div className="home-text">
-        <h1 style={{ fontSize: "100px" }}>hello</h1>
+        <h1 style={{ fontSize: "90px", textAlign: "left" }}>hello</h1>
         <h1 style={{ fontSize: "50px" }}>boi</h1>
-        <h1 style={{ fontSize: "40px" }}>on the website</h1>
-        <h1>Enjoy & Learn</h1>
-        <h1>GG HAVE FUN</h1>
+        <h1 style={{ fontSize: "40px", textAlign: "right" }}>on the website</h1>
       </div>
     </div>
   );
