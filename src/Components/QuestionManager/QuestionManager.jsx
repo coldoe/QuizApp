@@ -19,6 +19,8 @@ class QuestionManager extends React.Component {
       score: 0,
       curreInd: 0,
       firstLoading: true,
+      section: "",
+      questionsArrayForQuizz: [],
     };
     this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
@@ -26,10 +28,11 @@ class QuestionManager extends React.Component {
   componentDidMount() {
     //do i need a key from firebase?
     //here i have my param from route
+    //now i know that i should validate params
     const {
       match: { params },
     } = this.props;
-    // console.log(params);
+    this.setState({ section: params.section });
 
     db.ref("question_8th").on("value", (querySnapShot) => {
       let data = querySnapShot.val() ? querySnapShot.val() : {};
@@ -42,10 +45,15 @@ class QuestionManager extends React.Component {
         arrayWithQuestionsOnly.push(questionsItems[key])
       );
 
+      let quizz = arrayWithQuestionsOnly.filter(
+        (quest) => quest.section === this.state.section
+      );
+
       this.setState({
         questions: questionsItems,
         keys: keysArray,
         onlyQuestionsArray: arrayWithQuestionsOnly,
+        questionsArrayForQuizz: quizz,
       });
     });
   }

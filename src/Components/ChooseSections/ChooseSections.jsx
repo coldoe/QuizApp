@@ -1,5 +1,6 @@
 //libraries
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 //styles
 
 //import sections
@@ -16,7 +17,15 @@ export const ChooseSections = () => {
     <div className="Sections">
       <div className="container justify-content center">
         {sections.map((section) => (
-          <h1 style={{ fontSize: "30px" }}>{section.name}</h1>
+          //   <h1 style={{ fontSize: "30px" }}>{section.name}</h1>
+          <div className="section">
+            <Link
+              to={`/quizz/${section.name}`}
+              style={{ fontSize: "30px", color: "red" }}
+            >
+              {section.name}
+            </Link>
+          </div>
         ))}
       </div>
     </div>
