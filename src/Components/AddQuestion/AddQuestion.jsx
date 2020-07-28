@@ -3,6 +3,9 @@ import React, { useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 // import * as Yup from "yup";
 
+//environment
+import { db } from "../env";
+
 //Schemas
 import { AddQuestionSchema } from "../Schema/AddQuestionSchema";
 // import { sectionstList } from "../Schema/sectionsList";
@@ -28,6 +31,27 @@ export const AddQuestion = () => {
     M.AutoInit();
   }, []);
 
+  function addQuestion(object) {
+    //add routing and other component to add questions
+    //only for testing
+    const {
+      section,
+      question,
+      bad_answer_1,
+      bad_answer_2,
+      bad_answer_3,
+      good_answer,
+    } = object;
+    db.ref("/question_8th").push({
+      section: section,
+      question: question,
+      bad_answer_1: bad_answer_1,
+      bad_answer_2: bad_answer_2,
+      bad_answer_3: bad_answer_3,
+      good_answer: good_answer,
+    });
+  }
+
   return (
     <div className="AddQuestion">
       <Formik
@@ -41,7 +65,7 @@ export const AddQuestion = () => {
         }}
         validationSchema={AddQuestionSchema}
         onSubmit={(values, { resetForm }) => {
-          console.table(values);
+          addQuestion(values);
           resetForm({});
         }}
       >

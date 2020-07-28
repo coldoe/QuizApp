@@ -12,7 +12,7 @@ import { Home } from "./Components/Home/Home";
 import QuestionManager from "./Components/QuestionManager/QuestionManager";
 import { AddQuestion } from "./Components/AddQuestion/AddQuestion";
 import { Footer } from "./Components/Footer/Footer";
-
+import { ChooseSections } from "./Components/ChooseSections/ChooseSections";
 //css
 import "./App.css";
 
@@ -31,7 +31,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //give animation to navbar
     document.addEventListener("DOMContentLoaded", function () {
       var elems = document.querySelectorAll(".sidenav");
       var instances = M.Sidenav.init(elems, {});
@@ -55,28 +54,28 @@ class App extends React.Component {
     // });
   }
 
-  addQuestion() {
-    //add routing and other component to add questions
-    //only for testing
-    db.ref("/question_8th").push({
-      section: "pierwiastki",
-      question: "&radic;37 &#8729 &radic;12 &#8729 &#8731 9",
-      bad_answer_1: "b1",
-      bad_answer_2: "b2",
-      bad_answer_3: "b3",
-      good_answer: "good",
-    });
-  }
+  // addQuestion() {
+  //   //add routing and other component to add questions
+  //   //only for testing
+  //   db.ref("/question_8th").push({
+  //     section: "pierwiastki",
+  //     question: "&radic;37 &#8729 &radic;12 &#8729 &#8731 9",
+  //     bad_answer_1: "b1",
+  //     bad_answer_2: "b2",
+  //     bad_answer_3: "b3",
+  //     good_answer: "good",
+  //   });
+  // }
 
-  filterAnArray() {
-    //got keys
-    let questionsKeys = Object.keys(this.state.questions);
-    let array = [];
-    //filtering by section
-    questionsKeys.forEach((key) => array.push(this.state.questions[key]));
-    array = array.filter((quest) => quest.section === "pierwiastki");
-    this.setState({ questions: array });
-  }
+  // filterAnArray() {
+  //   //got keys
+  //   let questionsKeys = Object.keys(this.state.questions);
+  //   let array = [];
+  //   //filtering by section
+  //   questionsKeys.forEach((key) => array.push(this.state.questions[key]));
+  //   array = array.filter((quest) => quest.section === "pierwiastki");
+  //   this.setState({ questions: array });
+  // }
 
   hangleDataFromChild = () => {
     // because i know that user has quest to do
@@ -98,7 +97,8 @@ class App extends React.Component {
         <Router>
           <Header />
           <Switch>
-            <Route path="/quizz" component={QuestionManager} />
+            <Route path="/sections" component={ChooseSections} />
+            <Route path="/quizz/:section" component={QuestionManager} />
             <Route path="/addQuestion" component={AddQuestion} />
             <Route path="/" component={Home} />
           </Switch>
