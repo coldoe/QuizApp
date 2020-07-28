@@ -19,13 +19,13 @@ export const Header = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink className="center-align" to="/quizz">
-                Quizz
+              <NavLink className="center-align" to="/addQuestion">
+                Add Question
               </NavLink>
             </li>
             <li>
-              <NavLink className="center-align" to="/addQuestion">
-                Add Question
+              <NavLink className="center-align" to="/sections">
+                Sections
               </NavLink>
             </li>
           </ul>
@@ -39,13 +39,14 @@ export const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="center-align" to="/quizz">
-            Quizz
-          </NavLink>
-        </li>
-        <li>
           <NavLink className="center-align" to="/addQuestion">
             Add Question
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink className="center-align" to="/sections">
+            Sections
           </NavLink>
         </li>
       </ul>

@@ -8,6 +8,7 @@ export const Question = (props) => {
   const [goodAnswer, setgoodAnswer] = useState("");
   const [arrayAnswers, setarraAnswers] = useState([]);
 
+  //i should track of amount of good and bad answers
   function handleUserAnswer(answer) {
     setisAnswered(true);
     if (goodAnswer === answer) {
@@ -27,6 +28,7 @@ export const Question = (props) => {
     array.sort(() => Math.random() - 0.5);
     setarraAnswers(array);
   }
+
   useEffect(() => {
     setgoodAnswer(props.wholeQuestion.good_answer);
     changeTheOrder();

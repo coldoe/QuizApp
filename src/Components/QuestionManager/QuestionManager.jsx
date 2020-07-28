@@ -3,9 +3,12 @@ import { db } from "../env";
 
 //libraries
 import React from "react";
+import { Link } from "react-router-dom";
+
 //components
 import { Question } from "../Question/Question";
 import { Loading } from "../Loading/Loading";
+
 //css
 // import "../QuestionManager/QuestionManager.css";
 
@@ -21,6 +24,7 @@ class QuestionManager extends React.Component {
       firstLoading: true,
       section: "",
       questionsArrayForQuizz: [],
+      //good bad answers
     };
     this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
@@ -58,29 +62,6 @@ class QuestionManager extends React.Component {
     });
   }
 
-  // addQuestion() {
-  //   //add routing and other component to add questions
-  //   //only for testing
-  //   db.ref("/question_8th").push({
-  //     section: "pierwiastki",
-  //     question: "&radic;37 &#8729 &radic;12 &#8729 &#8731 9",
-  //     bad_answer_1: "b1",
-  //     bad_answer_2: "b2",
-  //     bad_answer_3: "b3",
-  //     good_answer: "good",
-  //   });
-  // }
-
-  // filterAnArray() {
-  //   //got keys
-  //   let questionsKeys = Object.keys(this.state.questions);
-  //   let array = [];
-  //   //filtering by section
-  //   questionsKeys.forEach((key) => array.push(this.state.questions[key]));
-  //   array = array.filter((quest) => quest.section === "pierwiastki");
-  //   this.setState({ questions: array });
-  // }
-
   hangleDataFromChild = () => {
     // because i know that user has quest to do
     this.setState({ firstLoading: false });
@@ -90,7 +71,7 @@ class QuestionManager extends React.Component {
   };
 
   handleScoreFromChild = (dataFromChild) => {
-    console.log(dataFromChild);
+    // console.log(dataFromChild);
     this.setState({ score: this.state.score + dataFromChild });
   };
   render() {
@@ -104,7 +85,7 @@ class QuestionManager extends React.Component {
               <div className="App">
                 {this.state.keys.length > 0 &&
                 this.state.curreInd <=
-                  this.state.onlyQuestionsArray.length - 1 ? (
+                  this.state.questionsArrayForQuizz.length - 1 ? (
                   <div className="col s4 ">
                     <h1 className="justify-content center">
                       Score: {this.state.score}
@@ -113,8 +94,7 @@ class QuestionManager extends React.Component {
                       key={this.state.keys[this.state.curreInd]}
                       id={this.state.keys[this.state.curreInd]}
                       wholeQuestion={
-                        // this.state.questions[this.state.keys[this.state.curreInd]]
-                        this.state.onlyQuestionsArray[this.state.curreInd]
+                        this.state.questionsArrayForQuizz[this.state.curreInd]
                       }
                       action={this.hangleDataFromChild}
                       handleScore={this.handleScoreFromChild}
@@ -124,7 +104,14 @@ class QuestionManager extends React.Component {
                   //there should be new component
                   //button to home
                   //scores and stats
-                  <h1 className="justify-content center">End of Questions</h1>
+                  <div className="justify-content center">
+                    <h1>End of Questions</h1>
+                    <Link to="/sections">
+                      <a className="waves-effect waves-light btn-large">
+                        Go and Choose Section, once more
+                      </a>
+                    </Link>
+                  </div>
                 ) : (
                   <Loading id="loadingCircle" />
                 )}

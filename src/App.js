@@ -35,47 +35,7 @@ class App extends React.Component {
       var elems = document.querySelectorAll(".sidenav");
       var instances = M.Sidenav.init(elems, {});
     });
-
-    //do i need a key from firebase?
-    // db.ref("question_8th").on("value", (querySnapShot) => {
-    //   let data = querySnapShot.val() ? querySnapShot.val() : {};
-    //   let questionsItems = data;
-    //   //maybe filter on this stage and keys to keys etc
-    //   let keysArray = Object.keys(questionsItems);
-    //   let arrayWithQuestionsOnly = [];
-    //   keysArray.forEach((key) =>
-    //     arrayWithQuestionsOnly.push(questionsItems[key])
-    //   );
-    //   this.setState({
-    //     questions: questionsItems,
-    //     keys: keysArray,
-    //     onlyQuestionsArray: arrayWithQuestionsOnly,
-    //   });
-    // });
   }
-
-  // addQuestion() {
-  //   //add routing and other component to add questions
-  //   //only for testing
-  //   db.ref("/question_8th").push({
-  //     section: "pierwiastki",
-  //     question: "&radic;37 &#8729 &radic;12 &#8729 &#8731 9",
-  //     bad_answer_1: "b1",
-  //     bad_answer_2: "b2",
-  //     bad_answer_3: "b3",
-  //     good_answer: "good",
-  //   });
-  // }
-
-  // filterAnArray() {
-  //   //got keys
-  //   let questionsKeys = Object.keys(this.state.questions);
-  //   let array = [];
-  //   //filtering by section
-  //   questionsKeys.forEach((key) => array.push(this.state.questions[key]));
-  //   array = array.filter((quest) => quest.section === "pierwiastki");
-  //   this.setState({ questions: array });
-  // }
 
   hangleDataFromChild = () => {
     // because i know that user has quest to do
