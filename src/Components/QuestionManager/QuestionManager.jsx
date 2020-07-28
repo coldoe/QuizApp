@@ -106,10 +106,11 @@ class QuestionManager extends React.Component {
                   //scores and stats
                   <div className="justify-content center">
                     <h1>End of Questions</h1>
-                    <Link to="/sections">
-                      <a className="waves-effect waves-light btn-large">
-                        Go and Choose Section, once more
-                      </a>
+                    <Link
+                      to="/sections"
+                      className="waves-effect waves-light btn-large"
+                    >
+                      Go and Choose Section, once more
                     </Link>
                   </div>
                 ) : (
