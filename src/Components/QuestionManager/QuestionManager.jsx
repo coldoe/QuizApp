@@ -49,8 +49,24 @@ class QuestionManager extends React.Component {
         arrayWithQuestionsOnly.push(questionsItems[key])
       );
 
+      //maybe it should be a function to chech params?
+      let section = (function (param) {
+        switch (param) {
+          case "ulamki":
+            return "ulamki";
+          case "pierwiastki":
+            return "pierwiastki";
+          default:
+            return "null";
+        }
+      })(params.section);
+
+      if (section === "null") {
+        window.location.href = "/";
+      }
+      //section is null
       let quizz = arrayWithQuestionsOnly.filter(
-        (quest) => quest.section === this.state.section
+        (quest) => quest.section === section
       );
 
       this.setState({
@@ -60,6 +76,15 @@ class QuestionManager extends React.Component {
         questionsArrayForQuizz: quizz,
       });
     });
+
+    //where clause firebase
+    // db.ref("question_8th")
+    //   .orderByChild("section")
+    //   .equalTo("pierwiastki")
+    //   .on("value", (querySnapShot) => {
+    //     let data = querySnapShot.val() ? querySnapShot.val() : {};
+    //     console.log(data);
+    //   });
   }
 
   hangleDataFromChild = () => {
@@ -83,7 +108,7 @@ class QuestionManager extends React.Component {
           <div clasname="row">
             <div className="col s12">
               <div className="App">
-                {this.state.keys.length > 0 &&
+                {this.state.questionsArrayForQuizz.length > 0 &&
                 this.state.curreInd <=
                   this.state.questionsArrayForQuizz.length - 1 ? (
                   <div className="col s4 ">
@@ -114,7 +139,12 @@ class QuestionManager extends React.Component {
                     </Link>
                   </div>
                 ) : (
-                  <Loading id="loadingCircle" />
+                  <div>
+                    <Loading id="loadingCircle" />
+                    <h1 className="justify-content center">
+                      {this.state.questionsArrayForQuizz.length}
+                    </h1>
+                  </div>
                 )}
               </div>
             </div>
