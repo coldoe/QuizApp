@@ -1,9 +1,9 @@
 //environment
-import { db } from "./Components/env";
+// import { db } from "./Components/env";
 
 //libraries
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 //components
@@ -33,7 +33,8 @@ class App extends React.Component {
   componentDidMount() {
     document.addEventListener("DOMContentLoaded", function () {
       var elems = document.querySelectorAll(".sidenav");
-      var instances = M.Sidenav.init(elems, {});
+      // var instances =
+      M.Sidenav.init(elems, {});
     });
   }
 

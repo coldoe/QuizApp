@@ -11,9 +11,12 @@ export const Header = () => {
             {" "}
             Logo{" "}
           </NavLink>
-          <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+          {/* <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
-          </a>
+          </a> */}
+          <NavLink to="" data-target="mobile-demo" className="sidenav-trigger">
+            <i className="material-icons">menu</i>
+          </NavLink>
           <ul className="right hide-on-med-and-down">
             <li>
               <NavLink to="/">Home</NavLink>

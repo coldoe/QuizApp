@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 //components
 import { Question } from "../Question/Question";
 import { Loading } from "../Loading/Loading";
+import { StatisticsAfterQuiz } from "../StatisticsAfterQuiz/StatisticsAfterQuiz";
 
 //css
 // import "../QuestionManager/QuestionManager.css";
@@ -25,6 +26,8 @@ class QuestionManager extends React.Component {
       section: "",
       questionsArrayForQuizz: [],
       //good bad answers
+      goodUserAnswers: 0,
+      badUserAnswers: 0,
     };
     this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
@@ -97,6 +100,11 @@ class QuestionManager extends React.Component {
 
   handleScoreFromChild = (dataFromChild) => {
     // console.log(dataFromChild);
+    if (dataFromChild === 1000) {
+      this.setState({ goodUserAnswers: this.state.goodUserAnswers + 1 });
+    } else {
+      this.setState({ badUserAnswers: this.state.badUserAnswers + 1 });
+    }
     this.setState({ score: this.state.score + dataFromChild });
   };
   render() {
@@ -137,13 +145,15 @@ class QuestionManager extends React.Component {
                     >
                       Go and Choose Section, once more
                     </Link>
+                    <StatisticsAfterQuiz
+                      key={this.state.goodUserAnswers}
+                      goodAnswers={this.state.goodUserAnswers}
+                      badAnswers={this.state.badUserAnswers}
+                    />
                   </div>
                 ) : (
                   <div>
                     <Loading id="loadingCircle" />
-                    <h1 className="justify-content center">
-                      {this.state.questionsArrayForQuizz.length}
-                    </h1>
                   </div>
                 )}
               </div>
