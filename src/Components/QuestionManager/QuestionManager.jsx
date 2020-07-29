@@ -109,7 +109,6 @@ class QuestionManager extends React.Component {
   };
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
-
     return (
       <div className="QuestionManager">
         <div className="container">

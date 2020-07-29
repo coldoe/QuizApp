@@ -52,16 +52,16 @@ class App extends React.Component {
   };
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
-
     return (
       <div className="App">
         <Router>
           <Header />
           <Switch>
-            <Route path="/sections" component={ChooseSections} />
-            <Route path="/quizz/:section" component={QuestionManager} />
-            <Route path="/addQuestion" component={AddQuestion} />
-            <Route path="/" component={Home} />
+            <Route exact path="/sections" component={ChooseSections} />
+            <Route exact path="/quizz/:section" component={QuestionManager} />
+            <Route exact path="/addQuestion" component={AddQuestion} />
+            <Route exact path="/" component={Home} />
+            <Route path="*" component={Home} />
           </Switch>
           <Footer />
         </Router>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 //styles
 import "./Question.css";
+import { Spring } from "react-spring/renderprops";
 
 export const Question = (props) => {
   // const [score, setscore] = useState(0);
@@ -35,74 +36,86 @@ export const Question = (props) => {
   }, []);
 
   return (
-    <div className="Question">
-      <div className="justify-content center">
-        <h1
-          className="quest"
-          dangerouslySetInnerHTML={{ __html: props.wholeQuestion.question }}
-        />
-      </div>
+    <Spring
+      from={{ opacity: 0 }}
+      to={{ opacity: 1 }}
+      config={{ duration: 1500 }}
+    >
+      {(style) => (
+        <div style={style}>
+          <div className="Question">
+            <div className="justify-content center">
+              <h1
+                className="quest"
+                dangerouslySetInnerHTML={{
+                  __html: props.wholeQuestion.question,
+                }}
+              />
+            </div>
 
-      <div className="justify-content center">
-        <div className="row">
-          <div className="col  s12 m12 l6 xl6">
-            <button
-              className="btn-block waves-effect waves-light btn-large"
-              id="button"
-              onClick={() => handleUserAnswer(arrayAnswers[0])}
-              dangerouslySetInnerHTML={{ __html: arrayAnswers[0] }}
-              disabled={isAnswered}
-            ></button>
-          </div>
+            <div className="justify-content center">
+              <div className="row">
+                <div className="col  s12 m12 l6 xl6">
+                  <button
+                    className="btn-block waves-effect waves-light btn-large"
+                    id="button"
+                    onClick={() => handleUserAnswer(arrayAnswers[0])}
+                    dangerouslySetInnerHTML={{ __html: arrayAnswers[0] }}
+                    disabled={isAnswered}
+                  ></button>
+                </div>
 
-          <div className="col s12 m12 l6 xl6">
-            <button
-              className="btn-block waves-effect waves-light btn-large"
-              onClick={() => handleUserAnswer(arrayAnswers[1])}
-              dangerouslySetInnerHTML={{ __html: arrayAnswers[1] }}
-              disabled={isAnswered}
-            ></button>
+                <div className="col s12 m12 l6 xl6">
+                  <button
+                    className="btn-block waves-effect waves-light btn-large"
+                    onClick={() => handleUserAnswer(arrayAnswers[1])}
+                    dangerouslySetInnerHTML={{ __html: arrayAnswers[1] }}
+                    disabled={isAnswered}
+                  ></button>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col  s12 m12 l6 xl6">
+                  <button
+                    className="btn-block waves-effect waves-light btn-large"
+                    id="button"
+                    onClick={() => handleUserAnswer(arrayAnswers[2])}
+                    dangerouslySetInnerHTML={{ __html: arrayAnswers[2] }}
+                    disabled={isAnswered}
+                  ></button>
+                </div>
+
+                <div className="col s12 m12 l6 xl6">
+                  <button
+                    className="btn-block waves-effect waves-light btn-large"
+                    onClick={() => handleUserAnswer(arrayAnswers[3])}
+                    dangerouslySetInnerHTML={{ __html: arrayAnswers[3] }}
+                    disabled={isAnswered}
+                  ></button>
+                </div>
+              </div>
+            </div>
+
+            <h2
+              className="justify-content center"
+              dangerouslySetInnerHTML={{
+                __html: "Section: " + props.wholeQuestion.section.toUpperCase(),
+              }}
+            />
+            {isAnswered ? (
+              <button
+                className={
+                  "waves-effect waves-light btn-large light-blue accent-3 pulse right"
+                }
+                onClick={() => props.action()}
+              >
+                Next Question
+              </button>
+            ) : null}
           </div>
         </div>
-
-        <div className="row">
-          <div className="col  s12 m12 l6 xl6">
-            <button
-              className="btn-block waves-effect waves-light btn-large"
-              id="button"
-              onClick={() => handleUserAnswer(arrayAnswers[2])}
-              dangerouslySetInnerHTML={{ __html: arrayAnswers[2] }}
-              disabled={isAnswered}
-            ></button>
-          </div>
-
-          <div className="col s12 m12 l6 xl6">
-            <button
-              className="btn-block waves-effect waves-light btn-large"
-              onClick={() => handleUserAnswer(arrayAnswers[3])}
-              dangerouslySetInnerHTML={{ __html: arrayAnswers[3] }}
-              disabled={isAnswered}
-            ></button>
-          </div>
-        </div>
-      </div>
-
-      <h2
-        className="justify-content center"
-        dangerouslySetInnerHTML={{
-          __html: "Section: " + props.wholeQuestion.section.toUpperCase(),
-        }}
-      />
-      {isAnswered ? (
-        <button
-          className={
-            "waves-effect waves-light btn-large light-blue accent-3 pulse right"
-          }
-          onClick={() => props.action()}
-        >
-          Next Question
-        </button>
-      ) : null}
-    </div>
+      )}
+    </Spring>
   );
 };
