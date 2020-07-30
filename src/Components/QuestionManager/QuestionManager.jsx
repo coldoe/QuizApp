@@ -32,14 +32,28 @@ class QuestionManager extends React.Component {
     this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
 
+  checkSection(param) {
+    switch (param) {
+      case "ulamki":
+        return "ulamki";
+      case "pierwiastki":
+        return "pierwiastki";
+      default:
+        return "null";
+    }
+  }
   componentDidMount() {
-    //do i need a key from firebase?
-    //here i have my param from route
-    //now i know that i should validate params
     const {
       match: { params },
     } = this.props;
     this.setState({ section: params.section });
+
+    //maybe it should be a function to chech params?
+    let section = this.checkSection(params.section);
+
+    if (section === "null") {
+      window.location.href = "/";
+    }
 
     db.ref("question_8th").on("value", (querySnapShot) => {
       let data = querySnapShot.val() ? querySnapShot.val() : {};
@@ -52,31 +66,22 @@ class QuestionManager extends React.Component {
         arrayWithQuestionsOnly.push(questionsItems[key])
       );
 
-      //maybe it should be a function to chech params?
-      let section = (function (param) {
-        switch (param) {
-          case "ulamki":
-            return "ulamki";
-          case "pierwiastki":
-            return "pierwiastki";
-          default:
-            return "null";
-        }
-      })(params.section);
-
-      if (section === "null") {
-        window.location.href = "/";
-      }
-      //section is null
       let quizz = arrayWithQuestionsOnly.filter(
         (quest) => quest.section === section
       );
+
+      let array = [];
+      for (let i = 0; i < 10; i++) {
+        let index = Math.floor(Math.random() * quizz.length);
+        array.push(quizz[index]);
+        quizz.splice(index, 1);
+      }
 
       this.setState({
         questions: questionsItems,
         keys: keysArray,
         onlyQuestionsArray: arrayWithQuestionsOnly,
-        questionsArrayForQuizz: quizz,
+        questionsArrayForQuizz: array,
       });
     });
 
