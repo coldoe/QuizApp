@@ -16,6 +16,7 @@ export const ChooseSections = () => {
   return (
     <div className="Sections">
       <div className="container justify-content center">
+        <h1>8TH CLASS</h1>
         {sections.map((section) => (
           //   <h1 style={{ fontSize: "30px" }}>{section.name}</h1>
           <div className="section">

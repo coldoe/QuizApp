@@ -17,14 +17,13 @@ class QuestionManager extends React.Component {
   constructor() {
     super();
     this.state = {
-      questions: [],
       keys: [],
-      onlyQuestionsArray: [],
+      questions: [],
+      questionsArrayForQuizz: [],
       score: 0,
       curreInd: 0,
       firstLoading: true,
-      section: "",
-      questionsArrayForQuizz: [],
+      // section: "",
       //good bad answers
       goodUserAnswers: 0,
       badUserAnswers: 0,
@@ -42,63 +41,11 @@ class QuestionManager extends React.Component {
         return "null";
     }
   }
-  componentDidMount() {
-    const {
-      match: { params },
-    } = this.props;
-    this.setState({ section: params.section });
-
-    //maybe it should be a function to chech params?
-    let section = this.checkSection(params.section);
-
-    if (section === "null") {
-      window.location.href = "/";
-    }
-
-    db.ref("question_8th").on("value", (querySnapShot) => {
-      let data = querySnapShot.val() ? querySnapShot.val() : {};
-      let questionsItems = data;
-      //maybe filter on this stage and keys to keys etc
-      let keysArray = Object.keys(questionsItems);
-
-      let arrayWithQuestionsOnly = [];
-      keysArray.forEach((key) =>
-        arrayWithQuestionsOnly.push(questionsItems[key])
-      );
-
-      let quizz = arrayWithQuestionsOnly.filter(
-        (quest) => quest.section === section
-      );
-
-      let array = [];
-      for (let i = 0; i < 10; i++) {
-        let index = Math.floor(Math.random() * quizz.length);
-        array.push(quizz[index]);
-        quizz.splice(index, 1);
-      }
-
-      this.setState({
-        questions: questionsItems,
-        keys: keysArray,
-        onlyQuestionsArray: arrayWithQuestionsOnly,
-        questionsArrayForQuizz: array,
-      });
-    });
-
-    //where clause firebase
-    // db.ref("question_8th")
-    //   .orderByChild("section")
-    //   .equalTo("pierwiastki")
-    //   .on("value", (querySnapShot) => {
-    //     let data = querySnapShot.val() ? querySnapShot.val() : {};
-    //     console.log(data);
-    //   });
-  }
 
   hangleDataFromChild = () => {
     // because i know that user has quest to do
     this.setState({ firstLoading: false });
-    if (this.state.curreInd <= this.state.onlyQuestionsArray.length - 1) {
+    if (this.state.curreInd <= this.state.questionsArrayForQuizz.length - 1) {
       this.setState({ curreInd: this.state.curreInd + 1 });
     }
   };
@@ -112,6 +59,47 @@ class QuestionManager extends React.Component {
     }
     this.setState({ score: this.state.score + dataFromChild });
   };
+
+  componentDidMount() {
+    const {
+      match: { params },
+    } = this.props;
+    this.setState({ section: params.section });
+
+    let section = this.checkSection(params.section);
+
+    if (section === "null") {
+      window.location.href = "/";
+    }
+
+    db.ref("question_8th")
+      .orderByChild("section")
+      .equalTo(section)
+      .on("value", (querySnapShot) => {
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let questionsItems = data;
+        let keysArray = Object.keys(questionsItems);
+        let arrayWithQuestionsOnly = [];
+
+        keysArray.forEach((key) =>
+          arrayWithQuestionsOnly.push(questionsItems[key])
+        );
+
+        let array = [];
+        for (let i = 0; i < 10; i++) {
+          let index = Math.floor(Math.random() * arrayWithQuestionsOnly.length);
+          array.push(arrayWithQuestionsOnly[index]);
+          arrayWithQuestionsOnly.splice(index, 1);
+        }
+
+        this.setState({
+          questions: questionsItems,
+          keys: keysArray,
+          questionsArrayForQuizz: array,
+        });
+      });
+  }
+
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
     return (
