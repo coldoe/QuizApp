@@ -43,7 +43,6 @@ class QuestionManager extends React.Component {
   }
 
   hangleDataFromChild = () => {
-    // because i know that user has quest to do
     this.setState({ firstLoading: false });
     if (this.state.curreInd <= this.state.questionsArrayForQuizz.length - 1) {
       this.setState({ curreInd: this.state.curreInd + 1 });
@@ -51,7 +50,6 @@ class QuestionManager extends React.Component {
   };
 
   handleScoreFromChild = (dataFromChild) => {
-    // console.log(dataFromChild);
     if (dataFromChild === 1000) {
       this.setState({ goodUserAnswers: this.state.goodUserAnswers + 1 });
     } else {
