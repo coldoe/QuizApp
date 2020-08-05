@@ -20,14 +20,14 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      questions: [],
-      keys: [],
-      onlyQuestionsArray: [],
-      score: 0,
-      curreInd: 0,
-      firstLoading: true,
+      // questions: [],
+      // keys: [],
+      // onlyQuestionsArray: [],
+      // score: 0,
+      // curreInd: 0,
+      // firstLoading: true,
     };
-    this.dataFromChild = this.hangleDataFromChild.bind(this);
+    // this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
 
   componentDidMount() {
@@ -38,18 +38,19 @@ class App extends React.Component {
     });
   }
 
-  hangleDataFromChild = () => {
-    // because i know that user has quest to do
-    this.setState({ firstLoading: false });
-    if (this.state.curreInd <= this.state.onlyQuestionsArray.length - 1) {
-      this.setState({ curreInd: this.state.curreInd + 1 });
-    }
-  };
+  // hangleDataFromChild = () => {
+  //   // because i know that user has quest to do
+  //   this.setState({ firstLoading: false });
+  //   if (this.state.curreInd <= this.state.onlyQuestionsArray.length - 1) {
+  //     this.setState({ curreInd: this.state.curreInd + 1 });
+  //   }
+  // };
 
-  handleScoreFromChild = (dataFromChild) => {
-    console.log(dataFromChild);
-    this.setState({ score: this.state.score + dataFromChild });
-  };
+  // handleScoreFromChild = (dataFromChild) => {
+  //   console.log(dataFromChild);
+  //   this.setState({ score: this.state.score + dataFromChild });
+  // };
+
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
     return (

@@ -8,13 +8,15 @@ export const Question = (props) => {
   const [isAnswered, setisAnswered] = useState(false);
   const [goodAnswer, setgoodAnswer] = useState("");
   const [arrayAnswers, setarraAnswers] = useState([]);
-
+  const [colorButton, setcolorButton] = useState("");
   //i should track of amount of good and bad answers
-  function handleUserAnswer(answer) {
+  async function handleUserAnswer(answer) {
     setisAnswered(true);
     if (goodAnswer === answer) {
+      await setcolorButton("teal accent-3");
       props.handleScore(1000);
     } else {
+      await setcolorButton("red accent-4");
       props.handleScore(-500);
     }
   }
@@ -105,9 +107,7 @@ export const Question = (props) => {
             />
             {isAnswered ? (
               <button
-                className={
-                  "waves-effect waves-light btn-large light-blue accent-3 pulse right"
-                }
+                className={`waves-effect waves-light btn-large accent-3 pulse right ${colorButton}`}
                 onClick={() => props.action()}
               >
                 Next Question

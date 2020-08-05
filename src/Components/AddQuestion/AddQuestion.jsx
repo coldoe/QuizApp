@@ -15,18 +15,6 @@ import "./AddQuestion.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 export const AddQuestion = () => {
-  // const [bad1, setbad1] = useState("");
-  // const sectiontList = [
-  //   {
-  //     label: "Ułamki",
-  //     value: "ulamki",
-  //   },
-  //   {
-  //     label: "Pierwiastki",
-  //     value: "pierwiastki",
-  //   },
-  // ];
-
   useEffect(() => {
     M.AutoInit();
   }, []);
@@ -42,7 +30,8 @@ export const AddQuestion = () => {
       bad_answer_3,
       good_answer,
     } = object;
-    db.ref("/question_8th").push({
+
+    db.collection("/question_8th").doc().set({
       section: section,
       question: question,
       bad_answer_1: bad_answer_1,

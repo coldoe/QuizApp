@@ -1,5 +1,8 @@
 export const ListOfSections = [
   {
+    name: "liczby",
+  },
+  {
     name: "ulamki",
   },
   {

@@ -9,4 +9,8 @@ export const sectionstList = [
     label: "Pierwiastki",
     value: "pierwiastki",
   },
+  {
+    label: "Liczby",
+    value: "liczby",
+  },
 ];

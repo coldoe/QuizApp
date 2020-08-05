@@ -23,12 +23,9 @@ class QuestionManager extends React.Component {
       score: 0,
       curreInd: 0,
       firstLoading: true,
-      // section: "",
-      //good bad answers
       goodUserAnswers: 0,
       badUserAnswers: 0,
     };
-    this.dataFromChild = this.hangleDataFromChild.bind(this);
   }
 
   checkSection(param) {
@@ -37,6 +34,8 @@ class QuestionManager extends React.Component {
         return "ulamki";
       case "pierwiastki":
         return "pierwiastki";
+      case "liczby":
+        return "liczby";
       default:
         return "null";
     }
@@ -58,7 +57,7 @@ class QuestionManager extends React.Component {
     this.setState({ score: this.state.score + dataFromChild });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const {
       match: { params },
     } = this.props;
@@ -70,32 +69,36 @@ class QuestionManager extends React.Component {
       window.location.href = "/";
     }
 
-    db.ref("question_8th")
-      .orderByChild("section")
-      .equalTo(section)
-      .on("value", (querySnapShot) => {
-        let data = querySnapShot.val() ? querySnapShot.val() : {};
-        let questionsItems = data;
-        let keysArray = Object.keys(questionsItems);
-        let arrayWithQuestionsOnly = [];
+    const cloudFireRef = db.collection("question_8th");
+    const querySnapShot = await cloudFireRef
+      .where("section", "==", section)
+      .get();
 
-        keysArray.forEach((key) =>
-          arrayWithQuestionsOnly.push(questionsItems[key])
-        );
+    let data = [];
+    let keys = [];
 
-        let array = [];
-        for (let i = 0; i < 10; i++) {
-          let index = Math.floor(Math.random() * arrayWithQuestionsOnly.length);
-          array.push(arrayWithQuestionsOnly[index]);
-          arrayWithQuestionsOnly.splice(index, 1);
-        }
+    if (querySnapShot.empty) {
+      console.log("No matching documents.");
+      return;
+    }
 
-        this.setState({
-          questions: questionsItems,
-          keys: keysArray,
-          questionsArrayForQuizz: array,
-        });
-      });
+    querySnapShot.forEach((doc) => {
+      keys.push(doc.id);
+      data.push(doc.data());
+    });
+
+    let array = [];
+    for (let i = 0; i < 10; i++) {
+      let index = Math.floor(Math.random() * data.length);
+      array.push(data[index]);
+      data.splice(index, 1);
+    }
+
+    this.setState({
+      questions: data,
+      keys: keys,
+      questionsArrayForQuizz: array,
+    });
   }
 
   render() {
@@ -124,9 +127,6 @@ class QuestionManager extends React.Component {
                     ></Question>
                   </div>
                 ) : this.state.firstLoading === false ? (
-                  //there should be new component
-                  //button to home
-                  //scores and stats
                   <div className="justify-content center">
                     <h1>End of Questions</h1>
                     <Link
