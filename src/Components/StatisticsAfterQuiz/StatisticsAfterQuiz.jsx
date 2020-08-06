@@ -7,7 +7,7 @@ export const StatisticsAfterQuiz = (props) => {
   return (
     <div className="justify-content center">
       <Spring
-        from={{ opacity: 0, marginTop: -600 }}
+        from={{ opacity: 0, marginTop: -100 }}
         to={{ opacity: 1, marginTop: 100 }}
         config={{ duration: 800 }}
       >

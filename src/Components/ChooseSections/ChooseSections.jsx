@@ -19,7 +19,7 @@ export const ChooseSections = () => {
         <h1>8TH CLASS</h1>
         {sections.map((section) => (
           //   <h1 style={{ fontSize: "30px" }}>{section.name}</h1>
-          <div className="section">
+          <div className="section" key={section.name}>
             <Link
               to={`/quizz/${section.name}`}
               style={{ fontSize: "30px", color: "red" }}

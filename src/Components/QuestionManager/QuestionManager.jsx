@@ -103,50 +103,53 @@ class QuestionManager extends React.Component {
 
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
+    let div;
+    if (
+      this.state.questionsArrayForQuizz.length > 0 &&
+      this.state.curreInd <= this.state.questionsArrayForQuizz.length - 1
+    ) {
+      div = (
+        <div className="col s4 ">
+          <h1 className="justify-content center">Score: {this.state.score}</h1>
+          <Question
+            key={this.state.keys[this.state.curreInd]}
+            id={this.state.keys[this.state.curreInd]}
+            wholeQuestion={
+              this.state.questionsArrayForQuizz[this.state.curreInd]
+            }
+            action={this.hangleDataFromChild}
+            handleScore={this.handleScoreFromChild}
+          ></Question>
+        </div>
+      );
+    } else if (this.state.firstLoading === false) {
+      div = (
+        <div className="justify-content center">
+          <h1>End of Questions</h1>
+          <Link to="/sections" className="waves-effect waves-light btn-large">
+            Go and Choose Section, once more
+          </Link>
+          <StatisticsAfterQuiz
+            key={this.state.goodUserAnswers}
+            goodAnswers={this.state.goodUserAnswers}
+            badAnswers={this.state.badUserAnswers}
+          />
+        </div>
+      );
+    } else if (this.state.firstLoading === true) {
+      div = (
+        <div>
+          <Loading id="loadingCircle" />
+        </div>
+      );
+    }
+
     return (
       <div className="QuestionManager">
         <div className="container">
           <div clasname="row">
             <div className="col s12">
-              <div className="App">
-                {this.state.questionsArrayForQuizz.length > 0 &&
-                this.state.curreInd <=
-                  this.state.questionsArrayForQuizz.length - 1 ? (
-                  <div className="col s4 ">
-                    <h1 className="justify-content center">
-                      Score: {this.state.score}
-                    </h1>
-                    <Question
-                      key={this.state.keys[this.state.curreInd]}
-                      id={this.state.keys[this.state.curreInd]}
-                      wholeQuestion={
-                        this.state.questionsArrayForQuizz[this.state.curreInd]
-                      }
-                      action={this.hangleDataFromChild}
-                      handleScore={this.handleScoreFromChild}
-                    ></Question>
-                  </div>
-                ) : this.state.firstLoading === false ? (
-                  <div className="justify-content center">
-                    <h1>End of Questions</h1>
-                    <Link
-                      to="/sections"
-                      className="waves-effect waves-light btn-large"
-                    >
-                      Go and Choose Section, once more
-                    </Link>
-                    <StatisticsAfterQuiz
-                      key={this.state.goodUserAnswers}
-                      goodAnswers={this.state.goodUserAnswers}
-                      badAnswers={this.state.badUserAnswers}
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <Loading id="loadingCircle" />
-                  </div>
-                )}
-              </div>
+              <div className="App">{div}</div>
             </div>
           </div>
         </div>
