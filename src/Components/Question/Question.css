@@ -1,12 +1,11 @@
 .btn-block {
   width: 90%;
-  height: 5em;
+  height: fit-content;
   border-radius: 10px;
 }
 .quest {
   min-height: 5em;
   font-size: 40px;
-  /* background-color: blue; */
   overflow-wrap: break-word;
 }
 

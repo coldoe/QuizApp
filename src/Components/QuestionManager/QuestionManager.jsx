@@ -87,6 +87,7 @@ class QuestionManager extends React.Component {
       data.push(doc.data());
     });
 
+    console.log("len:" + data.length);
     let array = [];
     for (let i = 0; i < 10; i++) {
       let index = Math.floor(Math.random() * data.length);
