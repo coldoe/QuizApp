@@ -9,3 +9,15 @@ export const ListOfSections = [
     name: "pierwiastki",
   },
 ];
+
+export const highScholSections = [
+  {
+    name: "trygonometria",
+  },
+];
+
+export const maturaExamSections = [
+  {
+    name: "bryly",
+  },
+];
