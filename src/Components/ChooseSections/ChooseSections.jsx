@@ -34,7 +34,7 @@ export const ChooseSections = () => {
               <div className="section" key={section.name}>
                 <Link
                   to={`/quizz/${section.name}`}
-                  style={{ fontSize: "30px", color: "red" }}
+                  style={{ fontSize: "30px", color: "#f48fb1   " }}
                 >
                   {section.name}
                 </Link>
@@ -47,7 +47,7 @@ export const ChooseSections = () => {
               <div className="section" key={section.name}>
                 <Link
                   to={`/quizz/${section.name}`}
-                  style={{ fontSize: "30px", color: "green" }}
+                  style={{ fontSize: "30px", color: "#e91e63  " }}
                 >
                   {section.name}
                 </Link>
@@ -60,7 +60,7 @@ export const ChooseSections = () => {
               <div className="section" key={section.name}>
                 <Link
                   to={`/quizz/${section.name}`}
-                  style={{ fontSize: "30px", color: "blue" }}
+                  style={{ fontSize: "30px", color: "#880e4f  " }}
                 >
                   {section.name}
                 </Link>

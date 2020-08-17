@@ -20,8 +20,6 @@ export const AddQuestion = () => {
   }, []);
 
   function addQuestion(object) {
-    //add routing and other component to add questions
-    //only for testing
     const {
       section,
       question,
@@ -99,14 +97,15 @@ export const AddQuestion = () => {
             {errors.section && touched.section ? (
               <div style={{ color: "red" }}>{errors.section}</div>
             ) : null}
-            {/* 
-            <div className="input-field col s12">
-              <select>
-                <option value="" disabled selected>
-                  Choose your option of section
-                </option>
+
+            {/* <div className="input-field col s12">
+              <select name="section">
                 {sectionstList.map((option) => (
-                  <option name={option.value} value={option.value}>
+                  <option
+                    key={option.value}
+                    name="section"
+                    value={option.value}
+                  >
                     {option.label}
                   </option>
                 ))}
