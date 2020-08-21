@@ -13,6 +13,7 @@ export const Register = () => {
           name: "",
           email: "",
           password: "",
+          confirmPassword: "",
         }}
         validationSchema={RegisterSchema}
         onSubmit={(values, { resetForm }) => {
@@ -34,6 +35,7 @@ export const Register = () => {
                 {errors.name && touched.name ? (
                   <div style={{ color: "red" }}>{errors.name}</div>
                 ) : null}
+
                 <label style={{ color: "black", fontSize: "25px" }}>
                   Email
                 </label>
@@ -41,12 +43,29 @@ export const Register = () => {
                 {errors.email && touched.email ? (
                   <div style={{ color: "red" }}>{errors.email}</div>
                 ) : null}
+
                 <label style={{ color: "black", fontSize: "25px" }}>
                   Password
                 </label>
-                <Field name="password" placeholder="YourP@ssw0rT" />
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="YourP@ssw0rT"
+                />
                 {errors.password && touched.password ? (
                   <div style={{ color: "red" }}>{errors.password}</div>
+                ) : null}
+
+                <label style={{ color: "black", fontSize: "25px" }}>
+                  Confirm Password
+                </label>
+                <Field
+                  type="password"
+                  name="passwordConfirm"
+                  placeholder="confirm password"
+                />
+                {errors.passwordConfirm && touched.passwordConfirm ? (
+                  <div style={{ color: "red" }}>{errors.passwordConfirm}</div>
                 ) : null}
 
                 <div className="row">
