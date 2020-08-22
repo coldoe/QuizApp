@@ -5,3 +5,6 @@ Todo:
 - add how many question player wants => second paramter maybe
 - add more questions
 - chart or count how many questions u have in database
+- logout
+- page unauthorized
+- buttons to login and section

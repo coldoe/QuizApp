@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 
 import { LoginSchema } from "../Schema/LoginSchema";
 
-export const Login = () => {
+export const Login = (props) => {
+  const [succ, setsucc] = useState("");
+  const [err, seterr] = useState("");
+
   function dataToSend(object) {
-    console.log(object);
+    //call api and return to app token
+    fetch("http://localhost:4000/api/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: object.email,
+        password: object.password,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          setsucc("You are logged in, go and choose section now");
+          seterr("");
+          return res.json();
+        } else {
+          setsucc("");
+          seterr("Something went wrong check credentials");
+          throw new Error("bad request");
+        }
+      })
+      .then((token) => {
+        console.log(token);
+        props.passToken(token);
+      })
+      .catch((error) => console.log(error));
   }
   return (
     <div className="Login">
@@ -48,6 +77,24 @@ export const Login = () => {
                     Submit{" "}
                   </button>
                 </div>
+
+                {err ? (
+                  <div
+                    className="justify-content center"
+                    style={{ color: "red" }}
+                  >
+                    {err}
+                  </div>
+                ) : null}
+
+                {succ ? (
+                  <div
+                    className="justify-content center"
+                    style={{ color: "green" }}
+                  >
+                    {succ}
+                  </div>
+                ) : null}
               </Form>
             </div>
           </div>

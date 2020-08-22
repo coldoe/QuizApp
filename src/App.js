@@ -28,19 +28,28 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     document.addEventListener("DOMContentLoaded", function () {
       var elems = document.querySelectorAll(".sidenav");
       // var instances =
       M.Sidenav.init(elems, {});
     });
+    await this.getToken();
   }
+
+  getToken = () => {
+    console.log(this.state.userAuthToken);
+  };
+  passingUser = (user) => {
+    this.setState({ userAuthToken: user });
+  };
 
   render() {
     // let questionsKeys = Object.keys(this.state.questions);
     return (
       <div className="App">
         <Router>
+          {/* if render in header based on roles */}
           <Header />
           <Switch>
             {/* admin */}
@@ -70,7 +79,14 @@ class App extends React.Component {
               user={this.state.userAuthToken}
             />
             {/* public */}
-            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/login"
+              // component={Login}
+              render={(props) => (
+                <Login {...props} passToken={this.passingUser} />
+              )}
+            />
             <Route exact path="/" component={Home} />
             <Route path="*" component={Home} />
           </Switch>

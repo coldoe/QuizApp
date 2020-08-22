@@ -5,7 +5,7 @@ import { decodeRole } from "./decodeRoleJWT";
 
 export const OnlyAdminRoute = ({ component: Component, user, ...rest }) => {
   let checkJWT = decodeRole(user);
-
+  console.log(checkJWT);
   return (
     <div>
       <Route

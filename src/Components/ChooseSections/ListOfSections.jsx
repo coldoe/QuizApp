@@ -12,12 +12,12 @@ export const ListOfSections = [
 
 export const highScholSections = [
   {
-    name: "trygonometria",
+    // name: "trygonometria",
   },
 ];
 
 export const maturaExamSections = [
   {
-    name: "bryly",
+    // name: "bryly",
   },
 ];
