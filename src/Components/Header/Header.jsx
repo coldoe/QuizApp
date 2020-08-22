@@ -31,6 +31,18 @@ export const Header = () => {
                 Sections
               </NavLink>
             </li>
+
+            <li>
+              <NavLink className="center-align" to="/login">
+                Login
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink className="center-align" to="/register">
+                Register
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>
@@ -50,6 +62,18 @@ export const Header = () => {
         <li>
           <NavLink className="center-align" to="/sections">
             Sections
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink className="center-align" to="/login">
+            Login
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink className="center-align" to="/register">
+            Register
           </NavLink>
         </li>
       </ul>

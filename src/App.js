@@ -15,13 +15,17 @@ import { Footer } from "./Components/Footer/Footer";
 import { ChooseSections } from "./Components/ChooseSections/ChooseSections";
 import { Login } from "./Components/Login/Login";
 import { Register } from "./Components/Register/Register";
+import { PrivateRoute } from "./Components/PrivateRoutes/PrivateRoute";
+import { OnlyAdminRoute } from "./Components/PrivateRoutes/OnlyAdminRoute";
 //css
 import "./App.css";
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      userAuthToken: "",
+    };
   }
 
   componentDidMount() {
@@ -39,11 +43,34 @@ class App extends React.Component {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/sections" component={ChooseSections} />
-            <Route exact path="/quizz/:section" component={QuestionManager} />
-            <Route exact path="/addQuestion" component={AddQuestion} />
+            {/* admin */}
+            <OnlyAdminRoute
+              exact
+              path="/addQuestion"
+              component={AddQuestion}
+              user={this.state.userAuthToken}
+            />
+            <OnlyAdminRoute
+              exact
+              path="/register"
+              component={Register}
+              user={this.state.userAuthToken}
+            />
+            {/* private */}
+            <PrivateRoute
+              exact
+              path="/sections"
+              component={ChooseSections}
+              user={this.state.userAuthToken}
+            />
+            <PrivateRoute
+              exact
+              path="/quizz/:section"
+              component={QuestionManager}
+              user={this.state.userAuthToken}
+            />
+            {/* public */}
             <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
             <Route exact path="/" component={Home} />
             <Route path="*" component={Home} />
           </Switch>

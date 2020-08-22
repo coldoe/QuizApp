@@ -7,7 +7,7 @@ export const RegisterSchema = Yup.object().shape({
     .required("Name is required"),
   email: Yup.string()
     .email()
-    .min(1, "Too short")
+    .min(6, "Too short")
     .max(128, "Too long")
     .required("Required"),
   password: Yup.string()
