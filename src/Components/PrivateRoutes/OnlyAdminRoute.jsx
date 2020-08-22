@@ -5,7 +5,6 @@ import { decodeRole } from "./decodeRoleJWT";
 
 export const OnlyAdminRoute = ({ component: Component, user, ...rest }) => {
   let checkJWT = decodeRole(user);
-  console.log(checkJWT);
   return (
     <div>
       <Route
@@ -15,7 +14,12 @@ export const OnlyAdminRoute = ({ component: Component, user, ...rest }) => {
             <Component {...props} />
           ) : (
             <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
+              to={{
+                pathname: "/login",
+                state: {
+                  from: props.location,
+                },
+              }}
             />
           )
         }

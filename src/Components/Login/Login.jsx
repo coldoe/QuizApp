@@ -8,7 +8,6 @@ export const Login = (props) => {
   const [err, seterr] = useState("");
 
   function dataToSend(object) {
-    //call api and return to app token
     fetch("http://localhost:4000/api/user/login", {
       method: "POST",
       headers: {
@@ -62,11 +61,14 @@ export const Login = (props) => {
                 <label style={{ color: "black", fontSize: "25px" }}>
                   Password
                 </label>
-                <Field name="password" placeholder="YourP@ssw0rT" />
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="YourP@ssw0rT"
+                />
                 {errors.password && touched.password ? (
                   <div style={{ color: "red" }}>{errors.password}</div>
                 ) : null}
-
                 <div className="row">
                   <button
                     className="col s6 offset-s3 btn-block waves-light btn-large"
@@ -76,7 +78,6 @@ export const Login = (props) => {
                     Submit{" "}
                   </button>
                 </div>
-
                 {err ? (
                   <div
                     className="justify-content center"

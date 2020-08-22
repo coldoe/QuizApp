@@ -1,8 +1,9 @@
 //libraries
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { decodeRole } from "../PrivateRoutes/decodeRoleJWT";
 
-export const Header = () => {
+export const Header = ({ user }) => {
   return (
     <div className="Header">
       <nav>
@@ -11,21 +12,21 @@ export const Header = () => {
             {" "}
             Logo{" "}
           </NavLink>
-          {/* <a href="#" data-target="mobile-demo" className="sidenav-trigger">
-            <i className="material-icons">menu</i>
-          </a> */}
           <NavLink to="" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </NavLink>
+
           <ul className="right hide-on-med-and-down">
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
-            <li>
-              <NavLink className="center-align" to="/addQuestion">
-                Add Question
-              </NavLink>
-            </li>
+            {decodeRole(user) ? (
+              <li>
+                <NavLink className="center-align" to="/addQuestion">
+                  Add Question
+                </NavLink>
+              </li>
+            ) : null}
             <li>
               <NavLink className="center-align" to="/sections">
                 Sections
@@ -37,12 +38,13 @@ export const Header = () => {
                 Login
               </NavLink>
             </li>
-
-            <li>
-              <NavLink className="center-align" to="/register">
-                Register
-              </NavLink>
-            </li>
+            {decodeRole(user) ? (
+              <li>
+                <NavLink className="center-align" to="/register">
+                  Register
+                </NavLink>
+              </li>
+            ) : null}
           </ul>
         </div>
       </nav>

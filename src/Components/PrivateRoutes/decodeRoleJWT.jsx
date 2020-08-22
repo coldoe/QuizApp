@@ -8,7 +8,6 @@ export const decode = (jwt) => {
     if (decoded) return true;
     return false;
   } catch (error) {
-    console.log(error);
     return false;
   }
 };
@@ -24,7 +23,6 @@ export const decodeRole = (jwt) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
     return false;
   }
 };
