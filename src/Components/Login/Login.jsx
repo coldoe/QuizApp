@@ -31,7 +31,6 @@ export const Login = (props) => {
         }
       })
       .then((token) => {
-        console.log(token);
         props.passToken(token);
       })
       .catch((error) => console.log(error));

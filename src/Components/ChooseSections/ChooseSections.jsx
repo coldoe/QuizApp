@@ -33,6 +33,7 @@ export const ChooseSections = () => {
             {sections.map((section) => (
               <div className="section" key={section.name}>
                 <Link
+                  key={section.name}
                   to={`/quizz/${section.name}`}
                   style={{ fontSize: "30px", color: "#f48fb1   " }}
                 >
@@ -46,6 +47,7 @@ export const ChooseSections = () => {
             {highSchool.map((section) => (
               <div className="section" key={section.name}>
                 <Link
+                  key={section.name}
                   to={`/quizz/${section.name}`}
                   style={{ fontSize: "30px", color: "#e91e63  " }}
                 >
