@@ -11,7 +11,7 @@ export const OnlyAdminRoute = ({ component: Component, user, ...rest }) => {
         {...rest}
         render={(props) =>
           checkJWT ? (
-            <Component {...props} />
+            <Component user={user.token} {...props} />
           ) : (
             <Redirect
               to={{

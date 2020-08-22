@@ -45,6 +45,13 @@ export const Header = ({ user }) => {
                 </NavLink>
               </li>
             ) : null}
+            {decodeRole(user) ? (
+              <li>
+                <NavLink className="center-align" to="/adminPanel">
+                  Admin Panel
+                </NavLink>
+              </li>
+            ) : null}
           </ul>
         </div>
       </nav>

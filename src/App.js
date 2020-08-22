@@ -17,6 +17,7 @@ import { Login } from "./Components/Login/Login";
 import { Register } from "./Components/Register/Register";
 import { PrivateRoute } from "./Components/PrivateRoutes/PrivateRoute";
 import { OnlyAdminRoute } from "./Components/PrivateRoutes/OnlyAdminRoute";
+import { UserListStudents } from "./Components/UserDashboard/UserListStudents";
 //css
 import "./App.css";
 
@@ -58,6 +59,13 @@ class App extends React.Component {
               exact
               path="/register"
               component={Register}
+              user={this.state.userAuthToken}
+            />
+            <OnlyAdminRoute
+              exact
+              path="/adminPanel"
+              render={(props) => <UserListStudents {...props} />}
+              component={UserListStudents}
               user={this.state.userAuthToken}
             />
             {/* private */}

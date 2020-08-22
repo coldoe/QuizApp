@@ -31,6 +31,7 @@ export const Login = (props) => {
       })
       .then((token) => {
         props.passToken(token);
+        props.history.push("/sections");
       })
       .catch((error) => console.log(error));
   }
