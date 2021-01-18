@@ -5,7 +5,7 @@ import "./Footer.css";
 export const Footer = () => {
   return (
     <div className="Footer">
-      <footer className="page-footer blue-grey">
+      <footer className="page-footer blue-grey fixed-bottom">
         <div className="container">
           <div className="row justify-content center">
             <div className="col l6 s12 offset-l3 ">
@@ -37,12 +37,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="footer-copyright justify-content center">
-          <div className="container">
-            © 2020 Copyright KD
-            {/* <a className="grey-text text-lighten-4 right" href="#!">
-              More Links
-            </a> */}
-          </div>
+          <div className="container">© 2020 Copyright KD</div>
         </div>
       </footer>
     </div>

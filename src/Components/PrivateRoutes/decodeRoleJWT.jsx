@@ -3,8 +3,6 @@ export const decode = (jwt) => {
     const base = jwt.token.split(".")[1];
     const dec = base.replace("-", "+").replace("_", "/");
     const decoded = JSON.parse(atob(dec));
-    // let date = new Date();
-    // // && decoded.exp < date.getTime()
     if (decoded) return true;
     return false;
   } catch (error) {
@@ -17,7 +15,6 @@ export const decodeRole = (jwt) => {
     const base = jwt.token.split(".")[1];
     const dec = base.replace("-", "+").replace("_", "/");
     const decoded = JSON.parse(atob(dec));
-    // let date = new Date();
     if (decoded && decoded.role === "admin") {
       return true;
     }

@@ -17,7 +17,7 @@ export const UserStudent = (props) => {
             marginTop: "20px",
           }}
         >
-          <h5>{`D: ${day} M: ${mon} Y: ${year}`}</h5>
+          <h5>{`${day}/${mon}/${year}`}</h5>
           <h5>{`name: ${props.name}`}</h5>
           <h5>{`email: ${props.email}`}</h5>
           <div className="justify-content center">

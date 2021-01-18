@@ -90,7 +90,14 @@ class App extends React.Component {
                 <Login {...props} passToken={this.passingUser} />
               )}
             />
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              // component={Home}
+              render={(props) => (
+                <Home {...props} passToken={this.passingUser} />
+              )}
+            />
             <Route path="*" component={Home} />
           </Switch>
           <Footer />

@@ -22,9 +22,6 @@ export const ChooseSections = () => {
   }, []);
 
   return (
-    // todo its doesnt work just frontend because i dont have this
-    // todo types of questions in database yet
-
     <div className="Sections">
       <div className="container justify-content center">
         <div className="row">

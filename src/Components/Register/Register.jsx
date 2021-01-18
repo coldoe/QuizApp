@@ -5,6 +5,25 @@ import { RegisterSchema } from "../Schema/RegisterSchema";
 export const Register = () => {
   function dataToSend(object) {
     console.log(object);
+    fetch("http://localhost:4000/api/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: object.name,
+        email: object.email,
+        password: object.password,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("bad request");
+        }
+      })
+      .catch((error) => console.log(error));
   }
   return (
     <div className="Login">

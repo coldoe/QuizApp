@@ -10,7 +10,7 @@ export const Header = ({ user }) => {
         <div className="nav-wrapper teal lighten-2">
           <NavLink data-target="mobile-demo" className="brand-logo" to="/">
             {" "}
-            Logo{" "}
+            QuizzAppDoe{" "}
           </NavLink>
           <NavLink to="" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
@@ -20,13 +20,6 @@ export const Header = ({ user }) => {
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
-            {decodeRole(user) ? (
-              <li>
-                <NavLink className="center-align" to="/addQuestion">
-                  Add Question
-                </NavLink>
-              </li>
-            ) : null}
             <li>
               <NavLink className="center-align" to="/sections">
                 Sections
@@ -38,6 +31,13 @@ export const Header = ({ user }) => {
                 Login
               </NavLink>
             </li>
+            {decodeRole(user) ? (
+              <li>
+                <NavLink className="center-align" to="/addQuestion">
+                  Add Question
+                </NavLink>
+              </li>
+            ) : null}
             {decodeRole(user) ? (
               <li>
                 <NavLink className="center-align" to="/register">
@@ -62,11 +62,6 @@ export const Header = ({ user }) => {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink className="center-align" to="/addQuestion">
-            Add Question
-          </NavLink>
-        </li>
 
         <li>
           <NavLink className="center-align" to="/sections">
@@ -79,12 +74,29 @@ export const Header = ({ user }) => {
             Login
           </NavLink>
         </li>
+        {decodeRole(user) ? (
+          <li>
+            <NavLink className="center-align" to="/addQuestion">
+              Add Question
+            </NavLink>
+          </li>
+        ) : null}
 
-        <li>
-          <NavLink className="center-align" to="/register">
-            Register
-          </NavLink>
-        </li>
+        {decodeRole(user) ? (
+          <li>
+            <NavLink className="center-align" to="/register">
+              Register
+            </NavLink>
+          </li>
+        ) : null}
+
+        {decodeRole(user) ? (
+          <li>
+            <NavLink className="center-align" to="/adminPanel">
+              Admin Panel
+            </NavLink>
+          </li>
+        ) : null}
       </ul>
     </div>
   );
